@@ -6,6 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Project.destroy_all
+Category.destroy_all
+
 10.times do |i|
 
 Project.create({
@@ -19,3 +22,7 @@ Project.create({
 
 })
 end
+
+Category.create({
+  category_name: Faker::Lorem.sentence(word_count = 2)
+})
