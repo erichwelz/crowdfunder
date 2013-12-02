@@ -1,14 +1,9 @@
 class Project < ActiveRecord::Base
 
-	validates	:title, :description, :goal_in_cents, :start_date, :finish_date, :owner_id, :presence => true
-  validates :goal_in_cents, :numericality => {:only_integer => true}
+	validates	:title, :description, :goal_in_dollars, :start_date, :finish_date, :owner_id, :presence => true
+  validates :goal_in_dollars, :numericality => {:only_integer => true}
 
-  validates :start_date, :date => {:before => :finish_date }
-
-   def formatted_price
-    goal_in_dollars = goal_in_cents.to_f / 100
-    sprintf("%.2f", goal_in_dollars)
-  end
-
+  validates :finish_date, :date => {:after => :start_date, :message => "must be after Start Date"}
+  validates :public_date, :date => {:after_or_equal_to => :start_date, :message => "must be after or equal to Start Date" }
 
 end

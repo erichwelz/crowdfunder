@@ -1,2 +1,14 @@
 <h1>Projects#index</h1>
-<p>Find me in app/views/projects/index.html.erb</p>
+
+<% @projects.each do |project| %>
+		<%= link_to "/projects/#{project.id}" do %>
+			
+			<div class="each_project">
+				<%= project.title %> <br>
+				<%= project.goal_in_dollars %> <br>
+				<%= project.start_date %> <br>
+				<%= project.finish_date %> <br>
+			</div> <!-- end project -->
+<% end %>
+<% end %>
+
