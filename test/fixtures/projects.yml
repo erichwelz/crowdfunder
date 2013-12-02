@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  goal_in_cents: 1
+  start_date: 2013-12-02 14:24:21
+  finish_date: 2013-12-02 14:24:21
+  owner_id: 1
+  public_date: 2013-12-02 14:24:21
+
+two:
+  title: MyString
+  description: MyText
+  goal_in_cents: 1
+  start_date: 2013-12-02 14:24:21
+  finish_date: 2013-12-02 14:24:21
+  owner_id: 1
+  public_date: 2013-12-02 14:24:21
