@@ -1,9 +1,6 @@
 Crowdfunder::Application.routes.draw do
 
-
-  get "contributions/new"
-  get "contributions/edit"
-  get "contributions/show"
+  resources :contributions, only: [:new, :create, :show]
 	resources :sessions
 
 	resources :users 
