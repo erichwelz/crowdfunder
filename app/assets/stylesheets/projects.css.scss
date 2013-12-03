@@ -23,6 +23,8 @@ header{
 	padding: .25em;
 	font-size: 3em;
 	background: $cool-blue;
+	/*height: 2em;*/
+	
 }
 footer{
 	height: 7em;
@@ -108,4 +110,17 @@ a:visited:hover{
 		float: left;
 		font-size: .8em;
 
+	}
+
+
+	.user-area{
+		font-size: 1em;
+		
+		float: right;
+		background: green;
+	}
+
+	.hello{
+	font-size: .5em;
+	background: green;
 	}
