@@ -1,4 +1,7 @@
 class Contribution < ActiveRecord::Base
 	belongs_to :projects
 	belongs_to :users
-end
+
+	validates :amount_in_dollars,  :numericality => {:only_integer => true}
+
+end	
