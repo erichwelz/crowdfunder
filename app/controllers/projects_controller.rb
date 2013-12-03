@@ -4,6 +4,8 @@ class ProjectsController < ApplicationController
 
    def index
     @projects = Project.all
+
+    @total_contributions = Contribution.sum(:amount_in_dollars, :conditions => "project_id = #{@project.id}")
   end
 
   def show

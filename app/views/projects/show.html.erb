@@ -1,11 +1,15 @@
-<h1>Projects#show</h1>
-    Project Name: <%= @project.title %> <br>
-    Project Category: <%= @project.category_id %> <br>
-		Project Goal: <%= @project.goal_in_dollars %> <br>
-    Start Date: <%= @project.start_date %> <br>
-		Close Date: <%= @project.finish_date %> <br>
-    Project Details: <%= @project.description %> <br>  	
-    
 
-			By: <%= @owner.first_name %> <br>
-      Category_id: <%= @project.category_id %> <br>
+
+<h1>Projects#show</h1>
+  Project Name: <%= @project.title %> <br>
+  Project Category: <%= @project.category_id %> <br>
+	Project Goal: <%= @project.goal_in_dollars %> <br>
+  Start Date: <%= @project.start_date %> <br>
+	Close Date: <%= @project.finish_date %> <br>
+  Project Details: <%= @project.description %> <br>  	
+  
+
+		By: <%= @owner.first_name %> <br>
+    Category_id: <%= @project.category_id %> <br>
+
+	<%= link_to "Make a Contribution",  new_contribution_path(:project_id => @project.id), class: "button" %>
