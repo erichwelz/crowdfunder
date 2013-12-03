@@ -8,7 +8,8 @@ class ContributionsController < ApplicationController
   def create
   	@contribution = Contribution.new(contribution_params)
     if @contribution.save
-      redirect_to projects_url
+    	
+      redirect_to project_url(Project.find(@contribution.project_id))
     else
       render :new
     end

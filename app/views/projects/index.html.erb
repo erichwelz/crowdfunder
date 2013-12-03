@@ -7,7 +7,7 @@
 				
 				<div class="project-title"> <%= project.title  %></div>
 				<div class="total-raised">Total Raised:</div>
-				<div class="project-goal">$<%= project.goal_in_dollars %> </div>
+				<div class="project-goal">$<%= project.total_contributions %> </div>
 				<div class="project-description"> <%= truncate(project.description, length: 120) %>  </div>
 				<div class="goal-date">Goal Date:</div>
 				 <div class="finish-date"> <%= project.finish_date.strftime('%b. %e') %> </div>

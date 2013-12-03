@@ -13,6 +13,40 @@
 		By: <%= @owner.first_name %> <br>
     Category_id: <%= @project.category_id %> <br>
   
-    Category Name: <%= @project.category.category_name %>
+    Category Name: <%= @project.category.category_name %> <br>
+ 
+ 		TOTAL CONTRIBUTIONS: <%= @project.total_contributions %>
 
-	<%= link_to "Make a Contribution",  new_contribution_path(:project_id => @project.id), class: "button" %>
+<%= form_for ([@project, @contribution])   do |f| %>
+<% if @contribution.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@contribution.errors.count, "error") %> prohibited this contribution from being saved:</h2>
+
+		<ul>
+		<% @contribution.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+		</ul>
+	</div>
+<% end %>
+
+<div class="row">
+	<div class="large-5 columns">
+		<div class="field">
+			<%= f.label :amount_in_dollars %><br />
+			<%= f.text_field :amount_in_dollars %>
+		</div>
+		
+		<%= f.hidden_field :project_id, :value => @project.id %>
+		<%= f.hidden_field :user_id, :value => current_user.id %>
+		
+		<%= @project.id %>
+		<%= current_user.id %>
+
+		<div class="actions">
+			<%= f.submit "submit", class: "button" %>
+		</div>
+
+	</div> <!-- end large-5 -->
+</div> <!-- end row -->
+<% end %>

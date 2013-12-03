@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 	   	:thumb => "100x100#" }, :default_url => "/images/:style/missing.png"
 
 	   	has_many :projects
-		has_many :projects, :through => :contributions
+			has_many :contributions
 
 	validates_confirmation_of :password
 	validates_presence_of :password, :on => :create
