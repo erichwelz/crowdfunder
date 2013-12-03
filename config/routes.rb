@@ -1,6 +1,9 @@
 Crowdfunder::Application.routes.draw do
 
 
+  get "contributions/new"
+  get "contributions/edit"
+  get "contributions/show"
 	resources :sessions
 
 	resources :users 

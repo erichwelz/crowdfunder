@@ -54,10 +54,7 @@
 <%= f.date_field :public_date %>
 </div>
 
-<div class="field">
-<%= f.label :owner_id %><br />
-<%= f.text_field :owner_id %>
-</div>
+<%= f.hidden_field :owner_id, :value => current_user.id %>
 
 
 <div class="actions">
