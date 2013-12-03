@@ -1,6 +1,5 @@
-<% @project = Project.find(params[:project_id]) %>
-
-<%= form_for @contribution do |f| %>
+askdhjf
+<%= form_for (@contribution = Contribution.new) do |f| %>
 <% if @contribution.errors.any? %>
 <div id="error_explanation">
 <h2><%= pluralize(@contribution.errors.count, "error") %> prohibited this contribution from being saved:</h2>
@@ -20,15 +19,11 @@
 			<%= f.label :amount_in_dollars %><br />
 			<%= f.text_field :amount_in_dollars %>
 		</div>
-		
-		<%= f.hidden_field :project_id, :value => @project.id %>
-		<%= f.hidden_field :user_id, :value => current_user.id %>
-		
-		<%= @project.id %>
+	<br>
 		<%= current_user.id %>
-
+<br>
 		<div class="actions">
-			<%= f.submit %>
+			<%= f.submit, class: 'button'%>
 		</div>
 
 	</div> <!-- end large-5 -->
