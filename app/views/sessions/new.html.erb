@@ -1,0 +1,22 @@
+<%= form_tag sessions_path do %>
+  
+
+
+  <div class="form_wrapper">
+    <h1 class="field">Login To Rainforest</h1>
+  <div class="field">
+    <%= text_field_tag :email, params[:email], placeholder: 'email' %>
+  </div>
+  <div class="field">
+    
+    <input type="password" name="password" placeholder="password" />
+  </div>
+  <div class="field remember">
+    <%= check_box_tag :remember_me, params[:remember_me]  %>
+    Remember Me
+  </div>
+  <div class="field"><%= submit_tag "Log in", class: 'bttn' %></div>
+<% end %>
+
+
+</div>

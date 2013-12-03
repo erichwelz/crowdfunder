@@ -15,6 +15,23 @@
 <div class="row">
   <header class="large-12 columns">
     <%= link_to "Crowdfunder", root_url %>
+
+
+      <% if current_user %>
+      <ul class="user_area">
+        <li><%= current_user.email %></li>
+        <ul class="drop_user_action">
+            <li> <%= link_to "Profile", user_path(current_user) %> </li>
+            <li> <%= link_to "Logout", logout_path %> </li>
+          </ul>
+      </ul>
+
+  <% else %>
+  <%= link_to "Sign up", signup_path %> or
+  <%= link_to "log in", login_path %>.
+  <% end %>
+
+
   </header>
 </div>  
 
