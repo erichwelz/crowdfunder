@@ -1,7 +1,7 @@
 <h1>Projects#show</h1>
     Project Name: <%= @project.title %> <br>
     Project Category: <%= @project.category_id %> <br>
-		Project Goal: <%= @project.goal_in_dollars %> <br>
+		Project Goal: $<%= sprintf("%.2f", @project.goal_in_dollars) %> <br>
     Start Date: <%= @project.start_date %> <br>
 		Close Date: <%= @project.finish_date %> <br>
     Project Details: <%= @project.description %> <br>  	
@@ -11,3 +11,4 @@
     Category_id: <%= @project.category_id %> <br>
   
     Category Name: <%= @project.category.category_name %>
+    
