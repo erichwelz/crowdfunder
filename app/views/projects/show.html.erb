@@ -1,9 +1,11 @@
 <h1>Projects#show</h1>
-	<%= @project.title %> <br>
-				<%= @project.goal_in_dollars %> <br>
-				<%= @project.start_date %> <br>
-				<%= @project.finish_date %> <br>
+    Project Name: <%= @project.title %> <br>
+    Project Category: <%= @project.category_id %> <br>
+		Project Goal: <%= @project.goal_in_dollars %> <br>
+    Start Date: <%= @project.start_date %> <br>
+		Close Date: <%= @project.finish_date %> <br>
+    Project Details: <%= @project.description %> <br>  	
+    
 
-				
-			<%= @project.owner_id %> <br>
-			<%= @owner.first_name %>
+			By: <%= @owner.first_name %> <br>
+      Category_id: <%= @project.category_id %> <br>

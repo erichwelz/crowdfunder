@@ -46,9 +46,16 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    columnize (0.3.6)
     date_validator (0.7.0)
       activemodel (>= 3)
     debug_inspector (0.0.2)
+    debugger (1.6.3)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.2.4)
+    debugger-linecache (1.2.0)
+    debugger-ruby_core_source (1.2.4)
     erubis (2.7.0)
     execjs (2.0.2)
     faker (1.2.0)
@@ -157,6 +164,7 @@ DEPENDENCIES
   binding_of_caller
   coffee-rails (~> 4.0.0)
   date_validator
+  debugger
   faker
   foundation-rails
   jbuilder (~> 1.2)
