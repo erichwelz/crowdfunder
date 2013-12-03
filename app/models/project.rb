@@ -1,5 +1,7 @@
 class Project < ActiveRecord::Base
 
+	belongs_to :category
+
 	validates	:title, :description, :goal_in_dollars, :start_date, :finish_date, :owner_id, :presence => true
   validates :goal_in_dollars, :numericality => {:only_integer => true}
 

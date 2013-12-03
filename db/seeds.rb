@@ -23,6 +23,8 @@ Project.create({
 })
 end
 
+5.times do |i|
 Category.create({
   category_name: Faker::Lorem.sentence(word_count = 2)
 })
+end

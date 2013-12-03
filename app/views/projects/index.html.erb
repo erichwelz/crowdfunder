@@ -11,6 +11,7 @@
 				<div class="project-description"> <%= truncate(project.description, length: 120) %>  </div>
 				<div class="goal-date">Goal Date:</div>
 				 <div class="finish-date"> <%= project.finish_date.strftime('%b. %e') %> </div>
+				 <div class="categories-tags">cats&tags</div>
 				</div> <!-- end project -->
 			<% end %>
 		<% end %>
