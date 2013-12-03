@@ -1,14 +1,24 @@
-<h1>Projects#index</h1>
+<div class="row">
+	<div class="large-12 large-centered columns">
+		
+		<% @projects.each do |project| %>
+			<%= link_to "/projects/#{project.id}" do %>
+				<div class="each_project small-5 columns">
+				
+				<div class="project-title"> <%= project.title  %></div>
+				<div class="total-raised">Total Raised:</div>
+				<div class="project-goal">$<%= project.goal_in_dollars %> </div>
+				<div class="project-description"> <%= truncate(project.description, length: 120) %>  </div>
+				<div class="goal-date">Goal Date:</div>
+				 <div class="finish-date"> <%= project.finish_date.strftime('%b. %e') %> </div>
+				</div> <!-- end project -->
+			<% end %>
+		<% end %>
 
-<% @projects.each do |project| %>
-		<%= link_to "/projects/#{project.id}" do %>
-			
-			<div class="each_project">
-				<%= project.title %> <br>
-				<%= project.goal_in_dollars %> <br>
-				<%= project.start_date %> <br>
-				<%= project.finish_date %> <br>
-			</div> <!-- end project -->
-<% end %>
-<% end %>
+
+	</div>
+	<div class="large-2 large-right columns">
+		&nbsp
+	</div>
+</div> <!-- end row -->
 
