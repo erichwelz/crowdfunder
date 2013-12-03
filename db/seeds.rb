@@ -10,7 +10,7 @@ Project.destroy_all
 Category.destroy_all
 User.destroy_all
 
-User.create!({
+user1 = User.create!({
   email: "test@test.ca",
   first_name: "test",
   last_name: "test",
@@ -19,7 +19,7 @@ User.create!({
   }
 )
 
-User.create!({
+user2 = User.create!({
   email: "pat@gmail.com",
   first_name: "pat",
   last_name: "hann",
@@ -28,7 +28,7 @@ User.create!({
   }
 )
 
-User.create!({
+user3 = User.create!({
   email: "nothing@gmail.com",
   first_name: "nothing",
   last_name: "project",
@@ -37,7 +37,7 @@ User.create!({
   }
 )
 
-User.create!({
+user4 = User.create!({
   email: "user4@gmail.com",
   first_name: "user4",
   last_name: "user4",
@@ -52,6 +52,8 @@ Category.create({
 })
 end
 
+category_ids = Category.all.map{|c| c.id}
+
 
 5.times do |i|
 
@@ -61,9 +63,9 @@ Project.create({
   goal_in_dollars: (rand * 10000).to_i,
   start_date: Date.today,
   finish_date: Date.today + 20,
-  owner_id: 1,
+  owner_id: user1.id,
   public_date: Date.today + 1,
-  category_id: ((rand * 4).to_i + 1)
+  category_id: category_ids.sample
 })
 end
 
@@ -75,9 +77,9 @@ Project.create({
   goal_in_dollars: (rand * 10000).to_i,
   start_date: Date.today,
   finish_date: Date.today + 20,
-  owner_id: 2,
+  owner_id: user2.id,
   public_date: Date.today + 1,
-  category_id: ((rand * 4).to_i + 1)
+  category_id: category_ids.sample
 })
 end
 
@@ -89,9 +91,9 @@ Project.create({
   goal_in_dollars: (rand * 10000).to_i,
   start_date: Date.today,
   finish_date: Date.today + 20,
-  owner_id: 4,
+  owner_id: user4.id,
   public_date: Date.today + 1,
-  category_id: ((rand * 4).to_i + 1)
+  category_id: category_ids.sample
 })
 end
 

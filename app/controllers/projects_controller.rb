@@ -52,4 +52,5 @@ class ProjectsController < ApplicationController
   def load_owner
     @owner = User.find_by(params[:owner_id])    
   end
+
 end
