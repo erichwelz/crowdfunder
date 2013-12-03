@@ -12,11 +12,28 @@
     <%= javascript_include_tag "application" %>
   </head>
 
+
+  <header>
 <div class="row">
-  <header class="large-12 columns">
-    <%= link_to "Crowdfunder", root_url %>
+        <div class="large-8 columns">
+          <%= link_to "Crowdfunder", root_url %>
+        </div>
+
+        <div class="large-4 columns hello">
+        <% if current_user %>
+          <%= current_user.email %>
+
+          <%= link_to "Profile", user_path(current_user) %> <br>
+          <%= link_to "Logout", logout_path %> 
+
+          <% else %>
+          <%= link_to "Sign up", signup_path %> or
+          <%= link_to "log in", login_path %>.
+          <% end %>
+        </div>
+        </div> 
   </header>
-</div>  
+ 
 
 <body>
 
