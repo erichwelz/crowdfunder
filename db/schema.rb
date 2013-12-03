@@ -62,5 +62,3 @@ ActiveRecord::Schema.define(version: 20131203175829) do
   add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token", using: :btree
 
 end
-
-
