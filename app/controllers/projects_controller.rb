@@ -7,7 +7,6 @@ class ProjectsController < ApplicationController
 
     @total_contributions = Contribution.sum(:amount_in_dollars, :conditions => "project_id = #{@project.id}")
   end
-  asdfkajhsdkjla
 
   def show
     @project = Project.find(params[:id])
