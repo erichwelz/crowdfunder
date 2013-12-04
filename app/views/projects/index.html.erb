@@ -10,7 +10,7 @@
 				 <%= truncate(project.description, length: 100) %> <br>
 				Goal Date: <%= project.finish_date.strftime('%b. %e') %> <br>
 				cats&tag
-
+						<%= project.public_date.strftime('%b. %e') %>
 						<%= project.owner_first_name %>
 						
 							</div>			
