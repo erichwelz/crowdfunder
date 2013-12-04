@@ -13,8 +13,63 @@
 
 		<%= @project.days_until_close %>
 		</div>
-	</div> <!-- end 6 -->
+		<hr>
 
+		<div class="row hello">
+			<% if current_user %>
+
+
+<%= form_for ([@project, @contribution])   do |f| %>
+									<% if @contribution.errors.any? %>
+										<div id="error_explanation">
+											<h2><%= pluralize(@contribution.errors.count, "error") %> prohibited this contribution from being saved:</h2>
+
+											<ul>
+											<% @contribution.errors.full_messages.each do |msg| %>
+											<li><%= msg %></li>
+											<% end %>
+											</ul>
+										</div>
+									<% end %>
+
+									<div class="row">
+										<div class="large-5 columns">
+											<div class="field">
+												<%= f.label :amount_in_dollars %><br />
+												<%= f.text_field :amount_in_dollars %>
+											</div>
+											
+											<%= f.hidden_field :project_id, :value => @project.id %>
+											<%= f.hidden_field :user_id, :value => current_user.id %>
+											
+											<%= @project.id %>
+											<%= current_user.id %>
+
+											<div class="actions">
+												<%= f.submit "submit", class: "button" %>
+											</div>
+
+										</div> <!-- end large-5 -->
+									</div> <!-- end row -->
+									<% end %>
+
+
+
+
+
+
+
+
+			<% else %>
+			<%= link_to "Login to Contribute", new_session_path, class: "button" %>
+			<% end %>	
+		</div>
+
+
+
+
+	</div> <!-- end 6 -->
+	
 	<div class="large-6 medium-6 small-12 columns">
 		<div class="row">
 		<div class="project-stats panel">
