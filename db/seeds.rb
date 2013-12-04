@@ -27,7 +27,7 @@ user2 = User.create!({
   password: "pat",
   password_confirmation: "pat",
   bio: "Pat is known for making an amazing kickstarter clone. Also the quick brown fox jumped over the lazy red dog."
-  }
+  
   }
 )
 
