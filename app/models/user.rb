@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
 	authenticates_with_sorcery!
 	
-	has_many :projects :class_name => "Project", :foreign_key => "owner_id"
+	has_many :projects, :class_name => "Project", :foreign_key => "owner_id"
 	has_many :contributions
 
 

@@ -32,7 +32,10 @@
 		
 		<div class="row owners-info">
 			<h5>Project Owner</h5>
- 				<%= @owner.first_name %>  <%= @owner.last_name %> 
+ 				
+				<%= link_to @owner.first_name,  "/users/#{@owner.id}" %><%= link_to @owner.last_name,  user_path %>
+				
+ 				
 				<%= image_tag @owner.avatar.url(:thumb) %>
 
 		</div>
