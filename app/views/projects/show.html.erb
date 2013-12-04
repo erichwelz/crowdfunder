@@ -1,5 +1,3 @@
-
-
 <h1>Projects#show</h1>
 
     Project Name: <%= @project.title %> <br>
@@ -15,7 +13,9 @@
   
     Category Name: <%= @project.category.category_name %> <br>
  
- 		TOTAL CONTRIBUTIONS: <%= @project.total_contributions %>
+ 		TOTAL CONTRIBUTIONS: <%= @project.total_contributions %> <br>
+
+ 		Percentage Of Goal: <%= @project.percentage_of_goal %>%
 
 <%= form_for ([@project, @contribution])   do |f| %>
 <% if @contribution.errors.any? %>

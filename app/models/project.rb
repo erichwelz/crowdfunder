@@ -4,7 +4,6 @@ class Project < ActiveRecord::Base
 	belongs_to :user
 
 	has_many :contributions
-  has_many :users, :through => :contributions
 
 	validates	:title, :description, :goal_in_dollars, :start_date, :finish_date, :owner_id, :presence => true
   validates :goal_in_dollars, :numericality => {:only_integer => true}
@@ -14,6 +13,11 @@ class Project < ActiveRecord::Base
 
   def total_contributions
   	contributions.sum(:amount_in_dollars)
+  end
+
+  def percentage_of_goal
+    percentage = (total_contributions.to_f / goal_in_dollars.to_f ) * 100
+    sprintf("%.2f", percentage)    
   end
 
 end

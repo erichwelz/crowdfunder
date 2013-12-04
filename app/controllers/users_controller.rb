@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+before_filter :load_project
 
 def new 
 		@user = User.new
@@ -39,6 +39,10 @@ def new
 
 	def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :avatar)
+  end
+
+  def load_project
+  	 @project = Project.find_by(params[:owner_id])
   end
 
 

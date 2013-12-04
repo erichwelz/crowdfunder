@@ -8,7 +8,7 @@
 		<%= @user.first_name %> <%= @user.last_name %> <br>
 		<%= @user.email %> 
 	<br>
-		Total Contributions: <%= @user.user_total_contributions %> 
+		Total Contributions: $<%= @user.user_total_contributions %> 
 
 	</div>
 
@@ -22,22 +22,36 @@
 <div class="row">
 		<div class="large-6 columns hello">
 			<h2>My Contributions</h2>
-
+			
+			<% x = 1 %>
+			
+			<table>	
+			<thead> <td>&nbsp</td> <td>Project</td> <td>contribution</td> </thead>
 			<% @user.contributions.each do |contribution| %>
 
 				<% project = Project.where(:id => contribution.project_id) %>
 					<% project.each do |proj| %>
-					<%= proj.title %>
+					<tr>
+					<td><%= x %></td>
+					<td><%= proj.title %></td>
 				<% end %>
-			
-				<%= contribution.amount_in_dollars %> 
-				<%= contribution.id %> <br>
+					<td> $<%= contribution.amount_in_dollars %> </td> 
+				</tr>
+				<% x+=1 %>
 			<% end %>
 
 		</div>
 
+		</table>
+
 		<div class="large-6 columns">
-			&nbsp
+			<h2>My Projects</h2>
+
+			<% @projects.each do |proj| %>
+				
+				<%= proj.owner_id %>
+			<% end %>
+
 		</div>
 </div>
 
