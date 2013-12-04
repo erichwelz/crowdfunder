@@ -19,7 +19,7 @@ class Project < ActiveRecord::Base
   end
 
   def percentage_of_goal
-    percentage = (total_contributions.to_f / goal_in_dollars.to_f ) * 100
+    percentage = (total_contributions_per_project.to_f / goal_in_dollars.to_f ) * 100
     sprintf("%.0f", percentage)    
   end
 
