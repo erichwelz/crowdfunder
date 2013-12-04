@@ -53,11 +53,20 @@
 		
 		<div class="large-6 medium-6 small-12 columns">
 			<h2>My Projects</h2>
+			
+		Private Projects
 
+			
 		<% @user.projects.each do |project| %>
 		
 		<%= project.title %> 
-		<%= project.percentage_of_goal %>%<br> 
+		<%= project.percentage_of_goal %>%
+		<%= link_to "P Page", project_path(project) %>
+		<%= project.public_date %>
+		<br> 
+
+
+		Public Projects
 		<% end %>
 
 
