@@ -9,7 +9,7 @@ class Project < ActiveRecord::Base
   validates :goal_in_dollars, :numericality => {:only_integer => true}
 
   validates :finish_date, :date => {:after => :start_date, :message => "must be after Start Date"}
-  validates :public_date, :date => {:after_or_equal_to => :start_date, :message => "must be after or equal to Start Date" }
+  # validates :public_date, :date => {:after_or_equal_to => :start_date, :message => "must be after or equal to Start Date" }
 
   delegate :first_name, :to => :owner, :prefix => true
 
