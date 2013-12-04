@@ -8,10 +8,14 @@ class User < ActiveRecord::Base
 
 	   	has_many :projects
 			has_many :contributions
+			has_many :projects, :through => :contributions
 
 	validates_confirmation_of :password
 	validates_presence_of :password, :on => :create
 	validates_presence_of :email
 	validates_uniqueness_of :email
 
+	def user_total_contributions
+		contributions.sum(:amount_in_dollars)
+	end
 end

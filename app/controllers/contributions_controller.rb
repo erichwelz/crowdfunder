@@ -16,7 +16,7 @@ class ContributionsController < ApplicationController
   end
 
   def show
-  	@contribution
+  	@contribution = Contribution.find(params[:id])
   end
 
   def destroy

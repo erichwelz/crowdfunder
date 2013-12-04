@@ -4,4 +4,7 @@ class Contribution < ActiveRecord::Base
 
 	validates :amount_in_dollars,  :numericality => {:only_integer => true}
 
+
+		
+	
 end	
