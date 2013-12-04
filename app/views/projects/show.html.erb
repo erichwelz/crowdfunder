@@ -3,16 +3,14 @@
 <h1>Projects#show</h1>
 
     Project Name: <%= @project.title %> <br>
-    Project Category: <%= @project.category_id %> <br>
-		Project Goal: $<%= sprintf("%.2f", @project.goal_in_dollars) %> <br>
+    Project Category ID: <%= @project.category_id %> <br>
+    Project Category Name: <%= @project.category.category_name %>
+	Project Goal: $<%= sprintf("%.2f", @project.goal_in_dollars) %> <br>
     Start Date: <%= @project.start_date %> <br>
-		Close Date: <%= @project.finish_date %> <br>
+	Close Date: <%= @project.finish_date %> <br>
+    Days until Project Closes: <%= [(@project.finish_date - @project.start_date).to_i,0].max %> <br>
     Project Details: <%= @project.description %> <br>  	
-    
-
-		By: <%= @owner.first_name %> <br>
-    Category_id: <%= @project.category_id %> <br>
-  
-    Category Name: <%= @project.category.category_name %>
+    Project Owner: <%= link_to @owner.first_name, user_path(@owner.id) %> <br>
 
 	<%= link_to "Make a Contribution",  new_contribution_path(:project_id => @project.id), class: "button" %>
+

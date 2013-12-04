@@ -19,7 +19,9 @@
 
 	<%= link_to "create project", new_project_path %>
 
-
+	My projects: <% @user.projects.each do |proj| %>
+		<%= proj.title %>
+	<% end %>
 
 </div>
 
