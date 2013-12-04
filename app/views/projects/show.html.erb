@@ -35,12 +35,11 @@
 		<div class="row owners-info">
 			<h5>Project Owner</h5>
  				
-				<%= link_to @owner.full_name,  "/users/#{@owner.id}" %>
+				<%= link_to @project.owner.first_name,  "/users/#{@project.owner.id}" %>
 				
  				
-				<%= image_tag @owner.avatar.url(:thumb) %>
-				owner <%= @project.first_name %> <br>
-				proejct owner <%= @project.owner_id %> <br>
+				<%= image_tag @project.owner.avatar.url(:thumb) %>
+				owner <%= @project.owner.first_name %> <br>
 				current user<%= current_user.id %> <br>
 
 		</div>

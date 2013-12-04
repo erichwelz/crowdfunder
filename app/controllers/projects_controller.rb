@@ -1,6 +1,5 @@
 class ProjectsController < ApplicationController
-  before_filter :load_owner
-
+  
 
    def index
     @projects = Project.all
@@ -50,9 +49,6 @@ class ProjectsController < ApplicationController
     params.require(:project).permit(:title, :description, :goal_in_dollars, :start_date, :finish_date, :owner_id, :public_date, :category_id)
   end
 
-  def load_owner
-    @project = Project.find_by(params[:owner_id])
-    @owner = User.find_by(params[@project.owner_id])    
-  end
+
 
 end
