@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20131203175829) do
     t.integer  "goal_in_dollars", limit: 8
     t.date     "start_date"
     t.date     "finish_date"
-    t.integer  "owner_id"
+    t.integer  "ownshoer_id"
     t.datetime "public_date"
     t.datetime "created_at"
     t.datetime "updated_at"
