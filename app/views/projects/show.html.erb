@@ -1,21 +1,61 @@
-<h1>Projects#show</h1>
+<div class="row"><h1><%= @project.title %></h1>
 
-    Project Name: <%= @project.title %> <br>
-    Project Category: <%= @project.category_id %> <br>
-		Project Goal: $<%= sprintf("%.2f", @project.goal_in_dollars) %> <br>
-    Start Date: <%= @project.start_date %> <br>
-		Close Date: <%= @project.finish_date %> <br>
-    Project Details: <%= @project.description %> <br>  	
-    
+	<div class="large-6  left medium-6 small-12 columns"> 
+    <h5><%= @project.category.category_name %></h5>
+		<p><%= @project.description %> </p> 
 
-		By: <%= @owner.first_name %> <br>
-    Category_id: <%= @project.category_id %> <br>
-  
-    Category Name: <%= @project.category.category_name %> <br>
- 
- 		TOTAL CONTRIBUTIONS: <%= @project.total_contributions %> <br>
+			<div class="dates">
+		<h6>Start:</h6> <h4><%= @project.start_date.strftime('%b. %e, %Y') %></h4>
+		</div>
+		<div class="dates">
+		<h6>End:</h6> <h4><%= @project.finish_date.strftime('%b. %e, %Y') %></h4>
+		</div>
 
- 		Percentage Of Goal: <%= @project.percentage_of_goal %>%
+	</div> <!-- end 5 -->
+
+	<div class="large-6 medium-6 small-12 columns">
+		<div class="row">
+		<div class="project-stats panel">
+		 <h6>Goal:</h6> <h2>$<%= @project.goal_in_dollars %></h2>
+		</div>
+		<div class="project-stats panel">
+		<h6>To Date:</h6> <h2>$<%= @project.total_contributions %></h2>
+		</div>
+
+		</div>
+
+		<div class="row">
+		<div class="percentage panel">
+		<%= @project.percentage_of_goal %>%
+		</div>
+		</div>
+		
+		<div class="row owners-info">
+			<h5>Proeject Owner</h5>
+ 				<%= @owner.first_name %>  <%= @owner.last_name %> 
+				<%= image_tag @owner.avatar.url(:thumb) %>
+
+		</div>
+
+
+	</div>
+</div>  <!-- end row -->
+
+
+
+
+<div class="row forming">
+
+	<div class="large-6 medium-6 small-6 hello">
+		
+
+
+
+
+	</div>
+
+
+	<div class="large-6 medium-6 small-6 goodbye">
 
 <%= form_for ([@project, @contribution])   do |f| %>
 <% if @contribution.errors.any? %>
@@ -50,3 +90,9 @@
 	</div> <!-- end large-5 -->
 </div> <!-- end row -->
 <% end %>
+
+
+</div>
+
+
+</div>

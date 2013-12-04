@@ -3,29 +3,13 @@ $error-orange: #ffbf00;
 $killer-grey: #F9F8F6;
 
 h1{
-	text-align: center;
-	padding: .25em;
-	background: orange;
+
 }
 
 textarea{
 	height: 300px;
 }
-header a{
-	text-decoration: none;
-	color: black;
-}
-header a:hover{
-	text-decoration: none;
-	color: grey;
-}
-header{
-	padding: .25em;
-	font-size: 3em;
-	background: $cool-blue;
-	/*height: 2em;*/
-	
-}
+
 footer{
 	height: 7em;
 	position: relative;
@@ -120,6 +104,33 @@ a:visited:hover{
 		background: green;
 	}
 
-	.hello{
-	background: green;
+	.space{
+	margin-right: 10px;
 	}
+	.hello{
+		background: orange;
+	}
+	.goodbye{
+		background: #ff00ff;
+	}
+.project-stats{
+	float: left;
+	margin-right: 1em;
+}
+.percentage{
+	float: left;
+	font-size: 4em;
+}
+.owners-info{
+	padding: 1em 0;
+	margin: 1em 0;
+	clear:both;
+}
+.forming{
+	margin: 1em 0;
+	background: green;
+}
+.dates{
+	margin: 1em;
+	float: left;
+}

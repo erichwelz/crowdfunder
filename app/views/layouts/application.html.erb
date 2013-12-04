@@ -13,29 +13,46 @@
   </head>
 
 
-  <header>
-<div class="row">
-        <div class="large-8 columns">
-          <%= link_to "Crowdfunder", root_url %>
-        </div>
 
-        <div class="large-4 columns user-area">
-        <% if current_user %>
-          <%= current_user.email %>
 
-          <%= link_to "Profile", user_path(current_user) %> <br>
-          <%= link_to "Logout", logout_path %> 
 
-          <% else %>
-          <%= link_to "Sign up", signup_path %> or
-          <%= link_to "log in", login_path %>.
-          <% end %>
-        </div>
-        </div> 
-  </header>
- 
 
 <body>
+<div class="contain-to-grid">
+  <nav class="top-bar" data-topbar data-mobile-show-parent-link="false">
+  
+    <ul class="title-area">
+      <li class="name">
+        <h1> <%= link_to "Crowdfunder", root_path %> </h1>
+      </li>
+    </ul>
+
+    <section class="top-bar-section">
+      <% if current_user %>
+      <ul class="right">
+        <li class="has-dropdown">
+          <a href="#">top</a>
+          <ul class="dropdown">
+            <li>
+              <a href="asdf">ASDF</a>
+            </li>
+            <li> this is item</li>
+          </ul>
+        </li>
+      </ul>
+      <% else %>
+      <ul class="right">
+        <li class="active">
+          <%= link_to "Sign Up", new_user_path %>
+        </li>
+        <li>
+          <%= link_to "Login", :login %>
+        </li>
+      </ul>
+      <% end %>
+    </section>
+  </nav>
+</div> <!-- end contain to grid -->
 
 <div class="row">
   <div class="large-12 columns">  
