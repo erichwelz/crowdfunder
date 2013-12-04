@@ -28,18 +28,21 @@
     </ul>
 
     <section class="top-bar-section">
+     
       <% if current_user %>
+     
+
       <ul class="right">
+        <li>  </li>
         <li class="has-dropdown">
-          <a href="#">top</a>
+          <%= link_to current_user.first_name, user_path(current_user) %>
           <ul class="dropdown">
-            <li>
-              <a href="asdf">ASDF</a>
-            </li>
-            <li> this is item</li>
+            <li> <%= link_to "Logout", logout_path %> </li>
           </ul>
         </li>
       </ul>
+
+
       <% else %>
       <ul class="right">
         <li class="active">

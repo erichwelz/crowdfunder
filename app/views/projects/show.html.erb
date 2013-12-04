@@ -9,6 +9,8 @@
 		</div>
 		<div class="dates">
 		<h6>End:</h6> <h4><%= @project.finish_date.strftime('%b. %e, %Y') %></h4>
+
+		<%= @project.days_until_close %>
 		</div>
 
 	</div> <!-- end 5 -->
@@ -33,10 +35,13 @@
 		<div class="row owners-info">
 			<h5>Project Owner</h5>
  				
-				<%= link_to @owner.first_name,  "/users/#{@owner.id}" %><%= link_to @owner.last_name,  user_path %>
+				<%= link_to @owner.full_name,  "/users/#{@owner.id}" %>
 				
  				
 				<%= image_tag @owner.avatar.url(:thumb) %>
+				owner <%= @project.first_name %> <br>
+				proejct owner <%= @project.owner_id %> <br>
+				current user<%= current_user.id %> <br>
 
 		</div>
 
