@@ -13,7 +13,8 @@ class Project < ActiveRecord::Base
 
   delegate :first_name, :to => :owner, :prefix => true
 
-  def total_contributions
+
+  def total_contributions_per_project
   	contributions.sum(:amount_in_dollars)
   end
 
@@ -25,4 +26,10 @@ class Project < ActiveRecord::Base
   def days_until_close
     [(finish_date - start_date).to_i , 0].max
   end
+
+  def total_contributions
+    Contribution.all.sum(:amount_in_dollars)
+  end
+
+
 end

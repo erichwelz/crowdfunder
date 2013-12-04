@@ -44,6 +44,8 @@ class ProjectsController < ApplicationController
     redirect_to project_path
   end
 
+  helper :all
+
   private
   def project_params
     params.require(:project).permit(:title, :description, :goal_in_dollars, :start_date, :finish_date, :owner_id, :public_date, :category_id)

@@ -11,11 +11,12 @@ Category.destroy_all
 User.destroy_all
 
 user1 = User.create!({
-  email: "test@test.ca",
+  email: "test@test.ca"
   first_name: "test",
   last_name: "test",
   password: "test",
-  password_confirmation: "test"
+  password_confirmation: "test",
+  bio: "Test was born in testland and grew up wanting to make an amazing kickstarter clone. Also the quick brown fox jumped over the lazy red dog."
   }
 )
 
@@ -24,7 +25,9 @@ user2 = User.create!({
   first_name: "pat",
   last_name: "hann",
   password: "pat",
-  password_confirmation: "pat"
+  password_confirmation: "pat",
+  bio: "Pat is known for making an amazing kickstarter clone. Also the quick brown fox jumped over the lazy red dog."
+  }
   }
 )
 
@@ -33,7 +36,8 @@ user3 = User.create!({
   first_name: "nothing",
   last_name: "project",
   password: "nothing",
-  password_confirmation: "nothing"
+  password_confirmation: "nothing",
+  bio: "Nothing don't care. Nothing don't care about nothing at all. Quick dogs, lazy foxes, nothing matters to this guy."
   }
 )
 
@@ -42,7 +46,8 @@ user4 = User.create!({
   first_name: "user4",
   last_name: "user4",
   password: "user4",
-  password_confirmation: "user4"
+  password_confirmation: "user4",
+  bio: "Users4 grew up listening to BBC4. This has prepared her for her exciting life as test text. A direct quote from her: Take that Lorem!"
   }
 )
 

@@ -1,5 +1,20 @@
 <div class="row">
+	<div class="large-8 columns centered panel space">
 
+	<ul>
+	<li>Total People contributed to Projects: </li>
+		<li>Total money raised: <%=  Contribution.all.sum(:amount_in_dollars) %></li>
+		
+
+I would like to see how many projects have been successfully funded 
+I would like to see how many projects have been funded in a particular category
+I would like to see how much money has been raised for a particular category
+I would like to see the percentage of funded versus failed projects
+	</ul>
+
+
+<div class="row">
+	
 	<% @projects.each do |project| %>
 		<% if project.public_date < Date.today %>
 				<%= link_to "/projects/#{project.id}" do %>
