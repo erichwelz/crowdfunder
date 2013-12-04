@@ -1,23 +1,22 @@
-
 <div class="row">
-	
-		<% @projects.each do |project| %>
-			
-		<%= link_to "/projects/#{project.id}" do %>
-				<div class="large-5 medium-5 small-12 columns centered panel space">
-				<h4><%= project.title  %></h4>
-				Total Raised: $<%= project.total_contributions %> <br> 
-				 <%= truncate(project.description, length: 100) %> <br>
-				Goal Date: <%= project.finish_date.strftime('%b. %e') %> <br>
-				
-					public date	<%= project.public_date.strftime('%b. %e') %> <br>
-						<%= project.owner_first_name %>
+
+	<% @projects.each do |project| %>
+		<% if project.public_date < Date.today %>
+				<%= link_to "/projects/#{project.id}" do %>
+					<div class="large-5 medium-5 small-12 columns centered panel space">
+						<h4><%= project.title  %></h4>
+						Total Raised: $<%= project.total_contributions %> <br> 
+						<%= truncate(project.description, length: 100) %> <br>
+						Goal Date: <%= project.finish_date.strftime('%b. %e') %> <br>
+
+						public date	<%= project.public_date.strftime('%b. %e') %> <br>
+						by <%= project.owner_first_name %>
 
 						cats&tag
-						
-							</div>			
+					</div>
 				<% end %>
 			<% end %>
+		<% end %>
 
 </div> <!-- end row -->
 
