@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131203175829) do
+ActiveRecord::Schema.define(version: 20131204220733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20131203175829) do
     t.integer  "goal_in_dollars", limit: 8
     t.date     "start_date"
     t.date     "finish_date"
-    t.integer  "ownshoer_id"
+    t.integer  "owner_id"
     t.datetime "public_date"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20131203175829) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.text     "bio"
   end
 
   add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token", using: :btree
