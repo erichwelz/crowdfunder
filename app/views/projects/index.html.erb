@@ -3,17 +3,19 @@
 
 	<ul>
 		<li>Total money raised: <%=  Contribution.all.sum(:amount_in_dollars) %></li>
-		<li>Total Projects funded:  <%= Contribution.all.distinct.count(:user_id)
- %></li>
+		<li>Total Projects Fully Funded: <%= Contribution.with_completed_goals.count %>
+		</li>
+
+
+
+
 	<li>Total number of contributions: <%= Contribution.all.count(:amount_in_dollars) %></li>
 	<li>Total number of contributors:  <%= Contribution.all.distinct.count(:user_id)
  %></li>
 </row>
 		
-
 I would like to see how many projects have been successfully funded 
 
-I would like to see the percentage of funded versus failed projects
 	</ul>
 
 
