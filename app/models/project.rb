@@ -20,4 +20,7 @@ class Project < ActiveRecord::Base
     sprintf("%.0f", percentage)    
   end
 
+  def days_until_close
+    [(finish_date - start_date).to_i , 0].max
+  end
 end

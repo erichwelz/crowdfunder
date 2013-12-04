@@ -21,4 +21,9 @@ class User < ActiveRecord::Base
 	def user_total_contributions
 		contributions.sum(:amount_in_dollars)
 	end
+
+	def full_name
+		full_name = first_name.capitalize + " " + last_name.capitalize 
+	end	
+
 end

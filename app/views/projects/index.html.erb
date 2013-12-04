@@ -1,3 +1,4 @@
+
 <div class="row">
 	
 		<% @projects.each do |project| %>
@@ -8,8 +9,11 @@
 				Total Raised: $<%= project.total_contributions %> <br> 
 				 <%= truncate(project.description, length: 100) %> <br>
 				Goal Date: <%= project.finish_date.strftime('%b. %e') %> <br>
-				cats&tags
-				</div>			
+				cats&tag
+
+						<%= @owner.first_name %>
+						
+							</div>			
 				<% end %>
 			<% end %>
 
