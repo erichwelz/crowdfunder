@@ -11,7 +11,7 @@ Category.destroy_all
 User.destroy_all
 
 user1 = User.create!({
-  email: "test@test.ca"
+  email: "test@test.ca",
   first_name: "test",
   last_name: "test",
   password: "test",
