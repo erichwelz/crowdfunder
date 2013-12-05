@@ -33,9 +33,11 @@
      
 
       <ul class="right">
-        <li>  </li>
+        <% if current_user.avatar !=  %>
+        <li class="mini-photo"> <%= image_tag current_user.avatar.url(:mini) %> </li>
+        <% end %>
         <li class="has-dropdown">
-          <%= link_to current_user.first_name, user_path(current_user) %>
+          <%= link_to current_user.full_name, user_path(current_user) %>
           <ul class="dropdown">
             <li> <%= link_to "Logout", logout_path %> </li>
           </ul>
