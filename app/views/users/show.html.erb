@@ -1,34 +1,53 @@
-<h1>Dashboard</h1>
-<hr>
+<div class="row">&nbsp</div>
 <div class="row">
-	<div class="large-4 medium-4 small-12columns">
-		<%= image_tag @user.avatar.url(:medium) %>
-	</div>
 	<div class="large-4 medium-4 small-12 columns">
-	 <h1 id="users-name"><%= @user.first_name %> <%= @user.last_name %></h1>
-		<%= @user.email %> <br>
-		<%= @user.bio %>
-	<br>
+		<%= image_tag @user.avatar.url(:medium) %>
+	</div> <!-- end column -->
+	<div class="large-8 medium-8 small-12 columns">
+	 <h1 id="users-name"><%= @user.full_name %></h1>
+		<p> <%= @user.email %> </p>
+		<p> <%= @user.bio %></p>
 		
 
+	</div> <!-- end column -->
+
+	</div> <!-- end row -->
+	
+	
+<hr>
+<div class="row">
+	<div class="large-3 columnslo">
+		<div class="panel left">
+		<h6>Total Contributions:</h6>
+		<h3>$<%= number_with_delimiter(@user.user_total_contributions, :delimiter => ',') %></h3> 
+		</div>
 	</div>
+	
+<div class="large-2 medium-2 small-6 columns">
+	<% if !current_user %>
+				<%= link_to "Log in to Contact #{@user.first_name}", new_session_path, class: "button small" %>
+		</div> <!-- end column if not user-->
 
-	<div class="large-4 medium-4 small-12columns">
+		<div class="large-7 medium-7 small 6 columns">&nbsp</div>
 
-		<% if current_user.id == @user.id %>
-			<%= link_to "create project", new_project_path, class: "button round" %>
-			<%= link_to "Edit My Information", edit_user_path(@user), class: "button round" %>
-		<% end %>
+	<% elsif current_user.id != @user.id %>
+			<div class="button small">Contact User</div>
+		</div> <!-- end column if user-->
+		<div class="large-7 medium-7 small-6 columns">&nbsp</div>
+	
+
+	<% elsif current_user.id == @user.id %>
+			<%= link_to "create project", new_project_path, class: "button small" %>
+		</div> <!-- end column - its users page -->
+		<div class="large-2 medium-2 small-6 columns">
+			<%= link_to "Edit My Information", edit_user_path(@user), class: "button small" %>
+		</div>
+		<div class="large-5 medium-5 small-6 columns">&nbsp</div>
+	<% end %>
+</div> <!-- end row -->
 
 
 
-	<div class="panel left">
-	Total Contributions: <br>
-	<h3>$<%= number_with_delimiter(@user.user_total_contributions, :delimiter => ',') %></h3> 
-	</div>
-
-	</div>
-</div>
 <hr>
 <div class="row">
 
@@ -46,7 +65,7 @@
 						<td><%= x %></td>
 						<td><%= proj.title %></td>
 				<% end %>
-						<td> $<%= contribution.amount_in_dollars %> </td> 
+						<td> $<%= number_with_delimiter(contribution.amount_in_dollars, :delimiter => ',') %> </td> 
 					</tr>
 				<% x+=1 %>
 			<% end %>
@@ -61,10 +80,13 @@
 			<thead> <td>Project</td> <td> % </td> <td> End Date</td> </thead>
 			<% @user.projects.each do |project| %>
 				<% if project.public_date < Date.today %>
+				
 				<tr>
-					<td> <%= project.title %> </td>
+					
+					<td><%= link_to "/projects/#{project.id}" do %> <%= project.title %> <% end %></td>
 					<td> <%= project.percentage_of_goal %>% </td>
-					<td> <%= project.finish_date.strftime('%b. %e, %Y') %> </td>
+					<td> <%= project.finish_date.strftime('%b. %e, %Y') %> <!-- end link --> </td>
+				
 				</tr>
 					
 					<% end %>
@@ -78,7 +100,7 @@
 		<% @user.projects.each do |project| %>
 			<% if project.public_date > Date.today %>
 				<tr>
-					<td><%= project.title %></td> 
+					<td><%= link_to "/projects/#{project.id}" do %><%= project.title %> <% end %> </td> 
 					<td><%= project.public_date.strftime('%b. %e, %Y') %></td>
 					<td>$<%= project.goal_in_dollars %></td>
 				</tr>

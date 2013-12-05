@@ -28,8 +28,8 @@ class Project < ActiveRecord::Base
       return 100
     else
       percentage_of_goal
-    end    
-  end
+    end   
+   end
 
   def days_until_close
     [(finish_date - start_date).to_i , 0].max

@@ -1,67 +1,44 @@
-<div class="row errors">
-
-<%= form_for @project do |f| %>
-<% if @project.errors.any? %>
-<div id="error_explanation">
-<h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
-
-<ul>
-<% @project.errors.full_messages.each do |msg| %>
-<li><%= msg %></li>
-<% end %>
-</ul>
-</div>
-<% end %>
-
-</div> <!-- end row -->
 <div class="row">
-<div class="large-5 columns">
-<div class="field">
-<%= f.label :title %><br />
-<%= f.text_field :title %>
-</div>
+	<%= form_for @project do |f| %>
+		<% if @project.errors.any? %>
+			<div class="row errors">
+				<div class="large-6 medium-6 small-12 columns">
+					<h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-<div class="form_field">
-<%= f.label :category_id %>
-<%= f.collection_select :category_id, Category.all, :id, :category_name %>
-</div>	
+					<ul>
+						<% @project.errors.full_messages.each do |msg| %>
+							<li><%= msg %></li>
+						<% end %>
+					</ul>
+				</div> <!-- end large -->
+			</div> <!-- end row -->
+		<% end %>
 
+		<div class="large-6 medium-6 small-12 columns">
+			<%= f.label :title %><br />
+			<%= f.text_field :title %>
 
+			<%= f.label :category_id %>
+			<%= f.collection_select :category_id, Category.all, :id, :category_name %>
 
+			<%= f.label :description %><br />
+			<%= f.text_area :description %>
 
-<div class="field">
-<%= f.label :description %><br />
-<%= f.text_area :description %>
-</div>
+			<%= f.label :goal_in_dollars %><br />
+			<%= f.text_field :goal_in_dollars %>
 
+			<%= f.label :start_date %><br />
+			<%= f.date_field :start_date %>
 
-<div class="field">
-<%= f.label :goal_in_dollars %><br />
-<%= f.text_field :goal_in_dollars %>
-</div>
-<div class="field">
-<%= f.label :start_date %><br />
-<%= f.date_field :start_date %>
-</div>
+			<%= f.label :finish_date %><br />
+			<%= f.date_field :finish_date %>
 
-<div class="field">
-<%= f.label :finish_date %><br />
-<%= f.date_field :finish_date %>
-</div>
+			<%= f.label :public_date %><br />
+			<%= f.date_field :public_date %>
 
-<div class="field">
-<%= f.label :public_date %><br />
-<%= f.date_field :public_date %>
-</div>
+			<%= f.hidden_field :owner_id, :value => current_user.id %>
 
-<%= f.hidden_field :owner_id, :value => current_user.id %>
-
-
-<div class="actions">
-<%= f.submit "Create Project", class: "button round" %>
-</div>
-<% end %>
-</div> <!-- end 5 columns -->
-
-</div>
+			<%= f.submit "Create Project", class: "button small" %>
+		</div> <!-- end columns -->
+	<% end %>
 </div>

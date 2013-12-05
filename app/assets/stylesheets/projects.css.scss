@@ -16,22 +16,9 @@ footer{
 	position: relative;
 	background: $cool-blue;
 }
-a:link{
-	color: black;
-}
-a:hover{
-	color: $cool-blue;
-}
-a:visited{
-	color: black;
-}
-a:visited:hover{
-	color: $cool-blue;
-}
 
-.row{
-	/*padding: 0 0 5em 0em;*/
-}
+
+
 .row .errors{
 	padding: 0px;
 }

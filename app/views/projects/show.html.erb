@@ -32,7 +32,11 @@
 						</div>
 					<% end %>
 
-					<div class="button" id="make-contribution">Make a Contribution</div>
+					<div class="button small" id="make-contribution">Make a Contribution</div> 
+					<% if current_user.id == @project.owner_id %>
+					<div class="button small">hey buddy</div>
+					<% end %>
+
 					<div class="row" id="contribution-form">
 						<div class="large-8 columns medium-8 small-12 center">
 							<%= f.label "How much would you like to Contribute?" %>
@@ -41,12 +45,12 @@
 							<%= f.hidden_field :project_id, :value => @project.id %>
 							<%= f.hidden_field :user_id, :value => current_user.id %>
 
-							<%= f.submit "submit", class: "button center" %>
+							<%= f.submit "submit", class: "button small" %>
 						</div> <!-- end large-8 -->
 					</div> <!-- end row -->
 				<% end %> <!-- end form -->
 			<% else %>
-				<%= link_to "Login to Contribute", new_session_path, class: "button" %>
+				<%= link_to "Login to Contribute", new_session_path, class: "button small" %>
 			<% end %>	
 		</div> <!-- end row -->
 
