@@ -1,22 +1,38 @@
+<div class="site-stats">
+	<div class="row">
+		<div class="large-12 medium-12 small-12 columns">
+			<div class="main-title"> Crowdfunder</div>
+			<div class="sub-title"><h2>the place to raise money to fulfil your dreams</h2></div>
+				<div class="row">
+					<div class="large-3 columns stats-content panel">
+						<span class="achievement-title">Money Raised:</span> 
+						<h1>$<%= number_with_delimiter( Contribution.all.sum(:amount_in_dollars), :delimiter => ',') %></h1>
+					</div>
+					<div class="large-3 columns stats-content panel">
+						<span class="achievement-title">Fully Funded Projects:</span>  
+						<h1><%= Contribution.with_completed_goals.count %></h1>
+					</div>
+					<div class="large-3 columns stats-content panel">
+						<span class="achievement-title">Total Contributions:</span>  
+						<h1><%= Contribution.all.count(:amount_in_dollars) %></h1>
+					</div>
+					<div class="large-3 columns stats-content panel">
+						<span class="achievement-title">Contributors:</span>  
+						<h1><%= Contribution.all.distinct.count(:user_id) %></h1>
+					</div>
+				</div> <!-- end row under main -->
+			</div>
+		</div>
+	</div>
+
+
 <div class="row">
-	<div class="large-8 columns centered panel space">
-
-	<ul>
-		<li>Total money raised: <%=  Contribution.all.sum(:amount_in_dollars) %></li>
-		<li>Total Projects Fully Funded: <%= Contribution.with_completed_goals.count %>
-		</li>
-
-
-
-
-	<li>Total number of contributions: <%= Contribution.all.count(:amount_in_dollars) %></li>
-	<li>Total number of contributors:  <%= Contribution.all.distinct.count(:user_id)
- %></li>
-</row>
+	<div class="large-12 columns centered">
+		 newest projects
+	</div>
+</div>
 		
-I would like to see how many projects have been successfully funded 
 
-	</ul>
 
 
 <div class="row">
