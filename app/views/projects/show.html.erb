@@ -74,16 +74,15 @@
 		<hr>
 		<div class="row owners-info">
 			<h5>Project Owner</h5>
- 				
+ 			<%= link_to "/users/#{@project.owner_id}" do %>
 				<div class="large-3 columns">
-			<%= image_tag @project.owner.avatar.url(:thumb) %>
-			 <br>
-			</div>
-
-			<div class="large-9 columns">
-				<h6><%= @project.owner.full_name %></h6>
-				<p> <%= truncate(@project.owner.bio, length: 70) %>
-			</div> 
+					<%= image_tag @project.owner.avatar.url(:thumb) %>
+				</div>
+				<div class="large-9 columns">
+					<h6><%= @project.owner.full_name %></h6>
+					<p> <%= truncate(@project.owner.bio, length: 70) %>
+				</div> 
+			<% end %>
 		</div>
 	</div>
 </div>  <!-- end big row -->

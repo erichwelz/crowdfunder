@@ -6,16 +6,22 @@
 	</div>
 	<div class="large-4 medium-4 small-12 columns">
 	 <h1 id="users-name"><%= @user.first_name %> <%= @user.last_name %></h1>
-		<%= @user.email %> 
+		<%= @user.email %> <br>
+		<%= @user.bio %>
 	<br>
 		
 
 	</div>
 
 	<div class="large-4 medium-4 small-12columns">
-		
-	<%= link_to "create project", new_project_path, class: "button round" %>
-	<%= link_to "Edit My Information", edit_user_path(@user), class: "button round" %>
+
+		<% if current_user.id == @user.id %>
+			<%= link_to "create project", new_project_path, class: "button round" %>
+			<%= link_to "Edit My Information", edit_user_path(@user), class: "button round" %>
+		<% end %>
+
+
+
 	<div class="panel left">
 	Total Contributions: <br>
 	<h3>$<%= @user.user_total_contributions %></h3> 
