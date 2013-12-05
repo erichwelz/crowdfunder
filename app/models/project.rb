@@ -23,6 +23,14 @@ class Project < ActiveRecord::Base
     sprintf("%.0f", percentage)    
   end
 
+  def max_percentage
+    if (percentage_of_goal.to_i >= 100)
+      return 100
+    else
+      percentage_of_goal
+    end    
+  end
+
   def days_until_close
     [(finish_date - start_date).to_i , 0].max
   end

@@ -69,8 +69,17 @@
 		<div class="row">
 		<div class="percentage panel">
 		<%= @project.percentage_of_goal %>%
+
 		</div>
 		</div>
+
+<div class="progress success round">
+  <span class="meter" style="width: <%= @project.max_percentage %>%;"></span>
+</div>
+
+
+
+		
 		<hr>
 		<div class="row owners-info">
 			<h5>Project Owner</h5>

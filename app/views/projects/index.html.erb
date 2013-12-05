@@ -4,19 +4,19 @@
 			<div class="main-title"> Crowdfunder</div>
 			<div class="sub-title"><h2>the place to raise money to fulfil your dreams</h2></div>
 				<div class="row">
-					<div class="large-3 columns stats-content panel">
+					<div class="large-3 medium-3 small-6 columns stats-content panel">
 						<span class="achievement-title">Money Raised:</span> 
 						<h1>$<%= number_with_delimiter( Contribution.all.sum(:amount_in_dollars), :delimiter => ',') %></h1>
 					</div>
-					<div class="large-3 columns stats-content panel">
+					<div class="large-3 medium-3 small-6 columns stats-content panel">
 						<span class="achievement-title">Fully Funded Projects:</span>  
 						<h1><%= Contribution.with_completed_goals.count %></h1>
 					</div>
-					<div class="large-3 columns stats-content panel">
+					<div class="large-3 medium-3 small-6 columns stats-content panel">
 						<span class="achievement-title">Total Contributions:</span>  
 						<h1><%= Contribution.all.count(:amount_in_dollars) %></h1>
 					</div>
-					<div class="large-3 columns stats-content panel">
+					<div class="large-3 medium-3 small-6  columns stats-content panel">
 						<span class="achievement-title">Contributors:</span>  
 						<h1><%= Contribution.all.distinct.count(:user_id) %></h1>
 					</div>
@@ -40,16 +40,20 @@
 	<% @projects.each do |project| %>
 		<% if project.public_date < Date.today %>
 				<%= link_to "/projects/#{project.id}" do %>
-					<div class="large-5 medium-5 small-12 columns centered panel space">
-						<h4><%= project.title  %></h4>
-						Total Raised: $<%= project.total_contributions_per_project %> <br> 
-						<%= truncate(project.description, length: 100) %> <br>
-						Goal Date: <%= project.finish_date.strftime('%b. %e') %> <br>
+					<div class="large-2 medium-2 small-5 columns centered space">
+						<h6><%= project.title  %></h6>
+						<div class="owner-name"> <h6>by <%= project.owner.full_name %></h6></div>
+						<p class="front-description">
 
-						public date	<%= project.public_date.strftime('%b. %e') %> <br>
-						by <%= project.owner_first_name %>
-
-						cats&tag
+							<%= truncate(project.description, length: 100) %> </p>
+						<p class="front-description">
+							Date: <%= project.finish_date.strftime('%b. %e') %> </p>		
+						<h6>Contributions:</h6>
+						<h6>$<%= number_with_delimiter( project.total_contributions_per_project, :delimiter => ',') %></h6>
+<div class="progress success round">
+  <span class="meter" style="width: <%= project.max_percentage %>%;"></span>
+</div>
+						 <br> 
 					</div>
 				<% end %>
 			<% end %>

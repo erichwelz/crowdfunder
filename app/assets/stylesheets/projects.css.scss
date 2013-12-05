@@ -106,7 +106,10 @@ a:visited:hover{
 	}
 
 	.space{
-	margin-right: 10px;
+	margin: 3px;
+	border: 1px solid black;
+	height: 24em;
+	border-radius: 3px;
 	}
 	.hello{
 		background: orange;
@@ -152,4 +155,16 @@ a:visited:hover{
 .contibution-form h4{
 	text-align: left;
 	background: pink;
+}
+
+.front-description{
+	font-size: .85em;
+	line-height: .9em;
+	font-family: open-sans;
+}
+.owner-name h6{
+	text-align: left;
+}
+.stats-content{
+	font-size: .1em;
 }
