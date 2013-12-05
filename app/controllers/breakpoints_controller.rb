@@ -7,7 +7,7 @@ class BreakpointsController < ApplicationController
   def create
   	@breakpoint = Breakpoint.new(breakpoint_params)
   	if @breakpoint.save
-    	redirect_to projects_url
+    	redirect_to project_url(Project.find(@breakpoint.project_id))
     else
       render :new
     end

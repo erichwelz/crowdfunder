@@ -20,8 +20,7 @@
 				<div class="button small" id="make-contribution">Make a Contribution</div> 
 					<% if current_user.id == @project.owner_id %>
 						<div class="button small">Edit Project</div>
-						<%= link_to "Add Breakboint", "/breakpoints/new" %>
-						<!-- <div class="button small" id="make-breakpoint">Add Breakpoint</div> -->
+						<div class="button small" id="make-breakpoint">Add Breakpoint</div>
 					<% end %>
 				<% end %>
 		</div> <!-- end row -->
@@ -69,7 +68,7 @@
 			<div class="large-8 medium-8 small-12 columns">
 				<%= f.label "What breakpoint thresholds would you like?" %>
 				<%= f.text_field :breakpoint_name, placeholder: "Breakpoint Name" %>
-				<%= f.text_field :breakpoint_name, placeholder: "Amount" %>
+				<%= f.text_field :breakpoint_amount, placeholder: "Amount" %>
 									
 				<%= f.hidden_field :project_id, :value => @project.id %>
 
