@@ -4,6 +4,7 @@ class Project < ActiveRecord::Base
 	belongs_to :owner, :foreign_key => "owner_id", :class_name => "User"
 
 	has_many :contributions
+  has_many :reviews
 
 	validates	:title, :description, :goal_in_dollars, :start_date, :finish_date, :owner_id, :presence => true
   validates :goal_in_dollars, :numericality => {:only_integer => true}
