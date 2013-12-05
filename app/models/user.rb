@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 	has_many :projects, :class_name => "Project", :foreign_key => "owner_id"
 	has_many :contributions
 	has_many :reviews
-	has_many :projects, :through => :reviews
+	
 
 
 

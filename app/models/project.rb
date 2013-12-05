@@ -5,6 +5,7 @@ class Project < ActiveRecord::Base
 
 	has_many :contributions
   has_many :reviews
+  has_many :users, :through => :reviews
   has_many :breakpoints
 
 	validates	:title, :description, :goal_in_dollars, :start_date, :finish_date, :owner_id, :presence => true
