@@ -24,7 +24,7 @@
 
 	<div class="panel left">
 	Total Contributions: <br>
-	<h3>$<%= @user.user_total_contributions %></h3> 
+	<h3>$<%= number_with_delimiter(@user.user_total_contributions, :delimiter => ',') %></h3> 
 	</div>
 
 	</div>
