@@ -15,3 +15,49 @@ h2 {
 .testing{
 	background: #ff00ff;
 }
+.active-projects, .future-projects, .my-contributions{
+	width: 100%;
+}
+
+.mini-photo{
+	line-height: 45px;
+}
+
+.crowd-image{
+width: 100%;
+opacity: .5;
+}
+
+.site-stats{
+	background: orange;
+	background-image:url('/images/myeong.png');
+	height: 450px;
+	background-size: 100% auto;
+}
+
+.main-title{
+	font-weight: bold;
+	margin: 1em auto .5em auto;
+	font-size: 4em;
+	text-align: center;
+	text-shadow: 1px 5px 5px rgba(255, 255, 255, 1);
+}
+.sub-title h2{
+	font-weight: bold;
+	font-style: italic;
+	margin: 0 0 1em 0;
+text-shadow: 1px 3px 3px rgba(255, 255, 255, 1);
+}
+.stats-content h1{
+	font-weight: bold;
+	text-shadow: 1px 4px 9px rgba(150, 150, 150, 1);
+
+}
+.achievement-title{
+	text-align: center;
+	display: block;
+	font-size: .8em;
+	font-style: italic;
+	margin: 1em auto;
+	text-shadow: 1px 4px 9px rgba(150, 150, 150, 1);
+}

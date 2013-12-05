@@ -1,13 +1,15 @@
 class ProjectsController < ApplicationController
   
 
-   def index
+  def index
     @projects = Project.all
   end
 
   def show
     @project = Project.find(params[:id])
     @contribution = Contribution.new
+    @review = Review.new
+    @breakpoint = Breakpoint.new
   end
 
   def new
@@ -43,6 +45,8 @@ class ProjectsController < ApplicationController
     @project.destroy
     redirect_to project_path
   end
+
+  helper :all
 
   private
   def project_params

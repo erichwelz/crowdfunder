@@ -4,11 +4,13 @@ class User < ActiveRecord::Base
 	
 	has_many :projects, :class_name => "Project", :foreign_key => "owner_id"
 	has_many :contributions
-
+	has_many :reviews
+	has_many :projects, :through => :reviews
 
 
 
 	has_attached_file :avatar, :styles => { 
+		  :mini => "30x30>",
 	   	:medium => "300x300>",
 	   	:thumb => "100x100#" }, :default_url => '/images/:attachment/missing_:style.png'
 	   	

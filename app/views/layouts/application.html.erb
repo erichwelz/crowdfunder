@@ -33,9 +33,11 @@
      
 
       <ul class="right">
-        <li>  </li>
+        <% if current_user.avatar !=  %>
+        <li class="mini-photo"> <%= image_tag current_user.avatar.url(:mini) %> </li>
+        <% end %>
         <li class="has-dropdown">
-          <%= link_to current_user.first_name, user_path(current_user) %>
+          <%= link_to current_user.full_name, user_path(current_user) %>
           <ul class="dropdown">
             <li> <%= link_to "Logout", logout_path %> </li>
           </ul>
@@ -57,17 +59,18 @@
   </nav>
 </div> <!-- end contain to grid -->
 
+<% unless current_page?('/') || current_page?('/projects') %>
 <div class="row">
-  <div class="large-12 columns">  
+  <div class="large-12 medium-12 small-12">   
+<% end %>
+
     <%= yield %>
      <%= javascript_include_tag "application" %>
   </div>
 </div>
 
 <div class="row">
-  <footer class="large-12 columns">
-    footer
-  </footer>
+ 
 </div>
 
 </body>

@@ -16,22 +16,9 @@ footer{
 	position: relative;
 	background: $cool-blue;
 }
-a:link{
-	color: black;
-}
-a:hover{
-	color: $cool-blue;
-}
-a:visited{
-	color: black;
-}
-a:visited:hover{
-	color: $cool-blue;
-}
 
-.row{
-	/*padding: 0 0 5em 0em;*/
-}
+
+
 .row .errors{
 	padding: 0px;
 }
@@ -106,7 +93,10 @@ a:visited:hover{
 	}
 
 	.space{
-	margin-right: 10px;
+	margin: 3px;
+	border: 1px solid black;
+	height: 24em;
+	border-radius: 3px;
 	}
 	.hello{
 		background: orange;
@@ -136,3 +126,37 @@ a:visited:hover{
 	float: left;
 }
 
+
+/****************/
+
+.owners-info h6{
+	text-align: left;
+}
+.owners-info h5{
+	text-align: center;
+}
+#contribution-form{
+	display: none;
+	padding: 0;
+}
+
+.contibution-form h4{
+	text-align: left;
+	background: pink;
+}
+#breakpoint-form{
+	display: none;
+	padding: 0;
+} 
+
+.front-description{
+	font-size: .85em;
+	line-height: .9em;
+	font-family: open-sans;
+}
+.owner-name h6{
+	text-align: left;
+}
+.stats-content{
+	font-size: .1em;
+}

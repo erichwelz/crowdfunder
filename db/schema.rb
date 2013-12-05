@@ -16,6 +16,14 @@ ActiveRecord::Schema.define(version: 20131205214928) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "breakpoints", force: true do |t|
+    t.integer  "project_id"
+    t.integer  "breakpoint_amount"
+    t.string   "breakpoint_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "categories", force: true do |t|
     t.string   "category_name"
     t.datetime "created_at"
