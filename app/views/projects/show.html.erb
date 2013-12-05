@@ -104,11 +104,13 @@
 <div class="progress success round">
   <span class="meter" style="width: <%= @project.max_percentage %>%;"></span>
 </div>
-
+	
 
 
 		
+		
 		<hr>
+
 		<div class="row owners-info">
 			<h5>Project Owner</h5>
  			<%= link_to "/users/#{@project.owner_id}" do %>
@@ -122,45 +124,43 @@
 			<% end %>
 		</div>
 	</div>
-	
-	<div class="row comments">
-
+	<hr>
+	</div> <!-- end big row -->
+	<div class="row">
+<hr>
+	<div class="large-12 medium-12 small-12">
   <h3>Reviews</h3>
-<div id="review-list">
-	  <%= render :partial => "reviews" %>
-</div>
+			<div id="review-list">
+				  <%= render :partial => "reviews" %>
+			</div>
 
-<% if current_user %>
+			<% if current_user %>
 
-<h4>New Review</h4>
+			<h4>New Review</h4>
 
-  <%= form_for ([@project, @review]), :remote => true do |f| %>
+			  <%= form_for ([@project, @review]), :remote => true do |f| %>
 
-    <% if @review.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+			    <% if @review.errors.any? %>
+			      <div id="error_explanation">
+			        <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
 
-        <ul>
-        <% @review.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
+			        <ul>
+			        <% @review.errors.full_messages.each do |msg| %>
+			          <li><%= msg %></li>
+			        <% end %>
+			        </ul>
+			      </div>
+			    <% end %>
 
-    <div class="field">
-      <%= f.label :comment %><br />
-      <%= f.text_area :comment %>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-  <% end %>
+			      <%= f.label :comment %><br />
+			      <%= f.text_area :comment %>
+			      <%= f.submit %>
+			  <% end %>
 
-    <% else %>
-  <p>Please <%= link_to "log in", new_session_path %> to add a review.</p> 
-<% end %>
+			    <% else %>
+			  <p>Please <%= link_to "log in", new_session_path %> to add a review.</p> 
+			<% end %>
 
-	</div>
-</div>  <!-- end big row -->
+				</div>
+	</div>  
 <hr>
