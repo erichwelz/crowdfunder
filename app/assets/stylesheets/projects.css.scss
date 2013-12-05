@@ -136,13 +136,18 @@ footer{
 	text-align: center;
 }
 #contribution-form{
-	display: none;
+	/*display: none;*/
 	padding: 0;
 }
+
 .contibution-form h4{
 	text-align: left;
 	background: pink;
 }
+#breakpoint-form{
+	/*display: none;*/
+	padding: 0;
+} 
 
 .front-description{
 	font-size: .85em;

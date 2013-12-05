@@ -1,7 +1,8 @@
 Crowdfunder::Application.routes.draw do
 
-	resources :projects do 
+ 	resources :projects do 
 	  resources :contributions, :except => [:index]
+	  resources :breakpoints, :except => [:index]
   end
 	
 

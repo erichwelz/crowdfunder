@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @contribution = Contribution.new
+    @breakpoint = Breakpoint.new
   end
 
   def new
