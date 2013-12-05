@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Project.destroy_all
-Breakpoints.destroy_all
+Breakpoint.destroy_all
 Category.destroy_all
 User.destroy_all
 Contribution.destroy_all
