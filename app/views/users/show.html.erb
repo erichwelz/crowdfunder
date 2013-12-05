@@ -72,44 +72,46 @@
 		</table>
 	</div>
 			
-	<div class="large-6 medium-6 small-12 columns">
-	<h2>My Projects</h2>
-	<h4>Active Projects</h4>
+	   <div class="large-6 medium-6 small-12 columns">
+        <h2>My Projects</h2>
+        <h4>Active Projects</h4>
 
-		<table class="active-projects">
-			<thead> <td>Project</td> <td> % </td> <td> End Date</td> </thead>
-			<% @user.projects.each do |project| %>
-				<% if project.public_date < Date.today %>
-				
-				<tr>
-					
-					<td><%= link_to "/projects/#{project.id}" do %> <%= project.title %> <% end %></td>
-					<td> <%= project.percentage_of_goal %>% </td>
-					<td> <%= project.finish_date.strftime('%b. %e, %Y') %> <!-- end link --> </td>
-				
-				</tr>
-					
-					<% end %>
-				<% end %>
-		</table>
+                <table class="active-projects">
+                        <thead> <td>Project</td> <td> % </td> <td> End Date</td> </thead>
+                        <% @user.projects.each do |project| %>
+                                <% if project.public_date < Date.today %>
+                                
+                                <tr>
+                                        
+                                        <td><%= link_to "/projects/#{project.id}" do %> <%= project.title %> <% end %></td>
+                                        <td> <%= project.percentage_of_goal %>% </td>
+                                        <td> <%= project.finish_date.strftime('%b. %e, %Y') %> <!-- end link --> </td>
+                                
+                                </tr>
+                                        
+                                        <% end %>
+                                <% end %>
+                </table>
 
-	<h4>Future Projects </h4>
+        <h4>Future Projects </h4>
 
-	<table class="future-projects">
-	<thead> <td>Project</td> <td> Start Date </td> <td> Goal</td> </thead>
-		<% @user.projects.each do |project| %>
-			<% if project.public_date > Date.today %>
-				<tr>
-					<td><%= link_to "/projects/#{project.id}" do %><%= project.title %> <% end %> </td> 
-					<td><%= project.public_date.strftime('%b. %e, %Y') %></td>
-					<td>$<%= project.goal_in_dollars %></td>
-				</tr>
-			<% end %>
-		<% end %>
-	</table>
+        <table class="future-projects">
+        <thead> <td>Project</td> <td> Start Date </td> <td> Goal</td> </thead>
+                <% @user.projects.each do |project| %>
+                        <% if project.public_date > Date.today %>
+                                <tr>
+                                        <td><%= link_to "/projects/#{project.id}" do %><%= project.title %> <% end %> </td> 
+                                        <td><%= project.public_date.strftime('%b. %e, %Y') %></td>
+                                        <td>$<%= project.goal_in_dollars %></td>
+                                </tr>
+                        <% end %>
+                <% end %>
+        </table>
 </div>
 </div>
 <hr>
+
+
 
 
 

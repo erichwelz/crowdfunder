@@ -27,28 +27,30 @@
 
 		<div class="row" id="contribution-form">
 			<hr width="80%">
-			<%= form_for ([@project, @contribution])   do |f| %>
-				<% if @contribution.errors.any? %>
-					<div class="row">
-						<h2><%= pluralize(@contribution.errors.count, "error") %> prohibited this contribution from being saved:</h2>
-						<ul>
-							<% @contribution.errors.full_messages.each do |msg| %>
-								<li><%= msg %></li>
-							<% end %>
-						</ul>
-					</div> <!-- end error row -->
-				<% end %>
+			<% if current_user %>
+				<%= form_for ([@project, @contribution])   do |f| %>
+					<% if @contribution.errors.any? %>
+						<div class="row">
+							<h2><%= pluralize(@contribution.errors.count, "error") %> prohibited this contribution from being saved:</h2>
+							<ul>
+								<% @contribution.errors.full_messages.each do |msg| %>
+									<li><%= msg %></li>
+								<% end %>
+							</ul>
+						</div> <!-- end error row -->
+					<% end %>
 
-				<div class="large-8 medium-8 small-12 columns">
-					<%= f.label "How much would you like to Contribute?" %>
-					<%= f.text_field :amount_in_dollars, placeholder: "Amount in Dollars" %>
-									
-					<%= f.hidden_field :project_id, :value => @project.id %>
-					<%= f.hidden_field :user_id, :value => current_user.id %>
+					<div class="large-8 medium-8 small-12 columns">
+						<%= f.label "How much would you like to Contribute?" %>
+						<%= f.text_field :amount_in_dollars, placeholder: "Amount in Dollars" %>
+										
+						<%= f.hidden_field :project_id, :value => @project.id %>
+						<%= f.hidden_field :user_id, :value => current_user.id %>
 
-					<%= f.submit "submit", class: "button small" %>
-				</div> <!-- end large-8 -->
-			<% end %><!--  end form contribution -->
+						<%= f.submit "submit", class: "button small" %>
+					</div> <!-- end large-8 -->
+				<% end %><!--  end form contribution -->
+			<% end %>
 		</div> <!-- end contribution div -->
 
 		<div class="row" id="breakpoint-form">
