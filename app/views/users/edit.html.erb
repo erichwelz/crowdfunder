@@ -1,35 +1,29 @@
-<div class="user_profile">
-		<h1>Edit Crowdfunder User Profile</h1>
+<div class="row">
+	<h1>Edit Crowdfunder User Profile</h1>
+
+	<div class="large-6 medium-6 small-12 columns">
+		
 
 		<%= form_for @user,  html: { multipart: true } do |f| %>
 		
-	<div class="form_field">
-		<%= f.label :first_name %>
-		<%= f.text_field :first_name %>
-	</div>
-		<div class="form_field">
-		<%= f.label :last_name %>
-		<%= f.text_field :last_name %>
-	</div>
-	<div class="form_field">
-		<%= f.label :email %>
-		<%= f.text_field :email %>
-	</div>
+			<%= f.label :first_name %>
+			<%= f.text_field :first_name %>
 
-	<div class="form_field">
-		<%= f.label :bio %>
-		<%= f.text_area :bio %>
-	</div>
-	
-	<div class="form_field">
-		<%= f.label :avatar %>
-		<%= f.file_field :avatar%>
-	</div>
+			<%= f.label :last_name %>
+			<%= f.text_field :last_name %>
 
+			<%= f.label :email %>
+			<%= f.text_field :email %>
 
-	<div class="form_submit"><%= f.submit %></div>
-<% end %>
-	
+			<%= f.label :bio %>
+			<%= f.text_area :bio %>
+		
+			<%= f.label :avatar %>
+			<%= f.file_field :avatar%>
+
+			<%= f.submit "Save Changes", class: "button small" %>
+		<% end %>
+	</div>
 </div>
 
 

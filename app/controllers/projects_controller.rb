@@ -9,6 +9,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @contribution = Contribution.new
     @review = Review.new
+    @breakpoint = Breakpoint.new
   end
 
   def new

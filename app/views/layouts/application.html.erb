@@ -59,7 +59,10 @@
   </nav>
 </div> <!-- end contain to grid -->
 
-
+<% unless current_page?('/') || current_page?('/projects') %>
+<div class="row">
+  <div class="large-12 medium-12 small-12">   
+<% end %>
 
     <%= yield %>
      <%= javascript_include_tag "application" %>
@@ -67,9 +70,7 @@
 </div>
 
 <div class="row">
-  <footer class="large-12 columns">
-    footer
-  </footer>
+ 
 </div>
 
 </body>

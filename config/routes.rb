@@ -1,12 +1,13 @@
 Crowdfunder::Application.routes.draw do
 
-  get "reviews/show"
-  get "reviews/new"
-  get "reviews/edit"
+
 	resources :projects do 
-	  resources :contributions, :except => [:index]
+    resources :contributions, :except => [:index]
     resources :reviews, :except => [:index]
+    resources :breakpoints, :except => [:index]
   end
+
+
 	
   resources :sessions
   resources :users

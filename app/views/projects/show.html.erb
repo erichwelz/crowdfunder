@@ -17,40 +17,66 @@
 
 		<div class="row">
 			<% if current_user %>
-
-				<%= form_for ([@project, @contribution])   do |f| %>
-													
-					<% if @contribution.errors.any? %>
-						<div id="error_explanation panel">
-							<h2><%= pluralize(@contribution.errors.count, "error") %> prohibited this contribution from being saved:</h2>
-
-							<ul>
-								<% @contribution.errors.full_messages.each do |msg| %>
-									<li><%= msg %></li>
-								<% end %>
-							</ul>
-						</div>
+				<div class="button small" id="make-contribution">Make a Contribution</div> 
+					<% if current_user.id == @project.owner_id %>
+						<div class="button small">Edit Project</div>
+						<div class="button small" id="make-breakpoint">Add Breakpoint</div>
 					<% end %>
-
-					<div class="button" id="make-contribution">Make a Contribution</div>
-					<div class="row" id="contribution-form">
-						<div class="large-8 columns medium-8 small-12 center">
-							<%= f.label "How much would you like to Contribute?" %>
-							<%= f.text_field :amount_in_dollars, placeholder: "Amount in Dollars" %>
-									
-							<%= f.hidden_field :project_id, :value => @project.id %>
-							<%= f.hidden_field :user_id, :value => current_user.id %>
-
-							<%= f.submit "submit", class: "button center" %>
-						</div> <!-- end large-8 -->
-					</div> <!-- end row -->
-				<% end %> <!-- end form -->
-			<% else %>
-				<%= link_to "Login to Contribute", new_session_path, class: "button" %>
-			<% end %>	
+				<% end %>
 		</div> <!-- end row -->
 
+		<div class="row" id="contribution-form">
+			<hr width="80%">
+			<%= form_for ([@project, @contribution])   do |f| %>
+				<% if @contribution.errors.any? %>
+					<div class="row">
+						<h2><%= pluralize(@contribution.errors.count, "error") %> prohibited this contribution from being saved:</h2>
+						<ul>
+							<% @contribution.errors.full_messages.each do |msg| %>
+								<li><%= msg %></li>
+							<% end %>
+						</ul>
+					</div> <!-- end error row -->
+				<% end %>
 
+				<div class="large-8 medium-8 small-12 columns">
+					<%= f.label "How much would you like to Contribute?" %>
+					<%= f.text_field :amount_in_dollars, placeholder: "Amount in Dollars" %>
+									
+					<%= f.hidden_field :project_id, :value => @project.id %>
+					<%= f.hidden_field :user_id, :value => current_user.id %>
+
+					<%= f.submit "submit", class: "button small" %>
+				</div> <!-- end large-8 -->
+			<% end %><!--  end form contribution -->
+		</div> <!-- end contribution div -->
+
+		<div class="row" id="breakpoint-form">
+		<hr>
+		<%= form_for ([@project, @breakpoint])   do |f| %>
+			<% if @breakpoint.errors.any? %>
+				<div class="row">
+					<h2><%= pluralize(@breakpoint.errors.count, "error") %> prohibited this contribution from being saved:</h2>
+					<ul>
+						<% @breakpoint.errors.full_messages.each do |msg| %>
+							<li><%= msg %></li>
+						<% end %>
+					</ul>
+				</div> <!-- end error row -->
+			<% end %>
+
+			<div class="large-8 medium-8 small-12 columns">
+				<%= f.label "What breakpoint thresholds would you like?" %>
+				<%= f.text_field :breakpoint_name, placeholder: "Breakpoint Name" %>
+				<%= f.text_field :breakpoint_amount, placeholder: "Amount" %>
+									
+				<%= f.hidden_field :project_id, :value => @project.id %>
+
+				<%= f.submit "submit", class: "button small" %>
+			</div> <!-- end large-8 -->
+		<% end %><!--  end form breakpoint -->
+
+	</div> <!-- end breakbpoint div -->
 
 
 	</div> <!-- end 6 -->

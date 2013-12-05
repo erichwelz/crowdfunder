@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project_id: 1
+  breakpoint_amount: 1
+  breakpoint_name: MyString
+
+two:
+  project_id: 1
+  breakpoint_amount: 1
+  breakpoint_name: MyString

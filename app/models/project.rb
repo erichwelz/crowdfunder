@@ -5,6 +5,7 @@ class Project < ActiveRecord::Base
 
 	has_many :contributions
   has_many :reviews
+  has_many :breakpoints
 
 	validates	:title, :description, :goal_in_dollars, :start_date, :finish_date, :owner_id, :presence => true
   validates :goal_in_dollars, :numericality => {:only_integer => true}
@@ -29,8 +30,8 @@ class Project < ActiveRecord::Base
       return 100
     else
       percentage_of_goal
-    end    
-  end
+    end   
+   end
 
   def days_until_close
     [(finish_date - start_date).to_i , 0].max
