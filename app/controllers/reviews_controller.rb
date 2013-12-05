@@ -11,11 +11,18 @@ class ReviewsController < ApplicationController
       :user_id => current_user.id
       ) 
 
-    if @review.save
-      redirect_to project_path(@project), notice: 'Review created successfully'
-    else
-      render :action => :show
+    respond_to do |format|
+
+
+      if @review.save
+        format.html { redirect_to project_path(@project), notice: 'Review created successfully' }
+        format.js {}
+      else
+        format.html { render :action => :show, alert: 'There was an error.' }
+        format.js {}
+      end
     end
+
   end
 
   def destroy

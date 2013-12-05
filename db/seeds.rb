@@ -7,8 +7,12 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Project.destroy_all
+Breakpoint.destroy_all
 Category.destroy_all
 User.destroy_all
+Contribution.destroy_all
+Review.destroy_all
+
 
 user1 = User.create!({
   email: "test@test.ca",
