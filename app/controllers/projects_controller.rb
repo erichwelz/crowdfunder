@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
     @projects = Project.current_projects.order('projects.finish_date ASC').page(params[:page])
 
    if params[:term]
-     @projects = @projects.where('name LIKE ?', "%#{params[:term]}%")
+     @projects = @projects.where('title LIKE ?', "%#{params[:term]}%")
    end
 
     respond_to do |format|

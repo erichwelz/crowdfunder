@@ -23,7 +23,7 @@
     response: function(event, ui) {
       for(var i=0; i < ui.content.length; i++) {
         var item = ui.content[i];
-        item.label = item.value = item.name;
+        item.label = item.title;
       }
     },
     select: function(event, ui) {
