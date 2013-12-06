@@ -16,7 +16,8 @@ class Project < ActiveRecord::Base
 
   delegate :first_name, :to => :owner, :prefix => true
 
-
+  scope :current_projects, lambda {Project.where("current_date BETWEEN public_date AND finish_date")}
+ 
   def total_contributions_per_project
   	contributions.sum(:amount_in_dollars)
   end
@@ -40,6 +41,14 @@ class Project < ActiveRecord::Base
 
   def total_contributions
     Contribution.all.sum(:amount_in_dollars)
+  end
+
+  def get_user(contribution)
+    @user = User.find_by(:id => contribution.user_id)    
+  end
+
+  def get_fully_funded_projects
+    
   end
 
 

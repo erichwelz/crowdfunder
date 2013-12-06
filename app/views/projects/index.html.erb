@@ -10,7 +10,10 @@
 					</div>
 					<div class="large-3 medium-3 small-6 columns stats-content panel">
 						<span class="achievement-title">Fully Funded Projects:</span>  
-						<h1><%= Contribution.with_completed_goals.count %></h1>
+					
+						<h1><%= Contribution.total_funded %>	
+						</h1>
+					
 					</div>
 					<div class="large-3 medium-3 small-6 columns stats-content panel">
 						<span class="achievement-title">Total Contributions:</span>  
@@ -25,10 +28,23 @@
 		</div>
 	</div>
 
+	</div>
+
+<div class = "row" >
+
+<hr />
+
+<%= label_tag :term, "Search Projects:" %>
+<%= text_field_tag :term %>
+
+<hr />
+
+</div>	
+
+
 
 <div class="row">
 	<div class="large-12 columns centered">
-		 newest projects
 	</div>
 </div>
 		
@@ -38,7 +54,6 @@
 <div class="row">
 	
 	<% @projects.each do |project| %>
-		<% if project.public_date < Date.today %>
 				<%= link_to "/projects/#{project.id}" do %>
 					<div class="large-2 medium-2 small-5 columns centered space">
 						<h6><%= project.title  %></h6>
@@ -55,11 +70,16 @@
 </div>
 						 <br> 
 					</div>
-				<% end %>
 			<% end %>
 		<% end %>
 
 </div> <!-- end row -->
+<div class="row bigspace">
+	
+<%= paginate @projects %>
+
+</div>
+
 
 
 

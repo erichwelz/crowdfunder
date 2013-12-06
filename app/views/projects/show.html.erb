@@ -22,6 +22,8 @@
 						<div class="button small">Edit Project</div>
 						<div class="button small" id="make-breakpoint">Add Breakpoint</div>
 					<% end %>
+				<% else %>
+				<%= link_to "Log in to Add a Review or Contribute", new_session_path, class: "button small" %> 
 				<% end %>
 		</div> <!-- end row -->
 
@@ -86,10 +88,10 @@
 	<div class="large-6 medium-6 small-12 columns">
 		<div class="row">
 		<div class="project-stats panel">
-		 <h6>Goal:</h6> <h2>$<%= @project.goal_in_dollars %></h2>
+		 <h6>Goal:</h6> <h2>$<%= number_with_delimiter( @project.goal_in_dollars, :delimiter => ',') %></h2>
 		</div>
 		<div class="project-stats panel">
-		<h6>To Date:</h6> <h2>$<%= @project.total_contributions_per_project %></h2>
+		<h6>To Date:</h6> <h2>$<%= number_with_delimiter(@project.total_contributions_per_project, :delimiter => ',') %></h2>
 		</div>
 
 		</div>
@@ -104,11 +106,27 @@
 <div class="progress success round">
   <span class="meter" style="width: <%= @project.max_percentage %>%;"></span>
 </div>
-
-
-
-		
 		<hr>
+			<div class="row">
+				<div class="large-12 medium-12 small-12 breakpoints">
+						<h4>Contriubution Breakpoints</h4>
+						<table class="breakpoint-table">
+							<thead><td>Title</td><td>Amount</td> </thead>
+							<% @project.breakpoints.each do |bp| %>
+								<tr>
+									<td><%= bp.breakpoint_name %></td>
+									<td>$<%= 
+								number_with_delimiter( bp.breakpoint_amount, :delimiter => ',') %></td>
+								</tr>  
+						<% end %>
+
+					</table>
+					
+				
+				</div> <!-- end large12 -->
+			</div> <!-- end row -->
+		<hr>
+
 		<div class="row owners-info">
 			<h5>Project Owner</h5>
  			<%= link_to "/users/#{@project.owner_id}" do %>
@@ -122,45 +140,69 @@
 			<% end %>
 		</div>
 	</div>
-	
-	<div class="row comments">
 
-  <h3>Reviews</h3>
-<div id="review-list">
-	  <%= render :partial => "reviews" %>
+	</div> <!-- end big row -->
+			
+ 				
+	<div class="row">
+	<hr>
+		<div class="large-6 medium-6 small-12 columns">
+  		<h3>Contributions</h3>
+			
+			<table class="contribution-table">
+				<thead> <td></td><td>Contributor</td> <td>Amount</td> <td>Date</td> </thead>
+					<% count = 1 %>
+				<% @project.contributions.each do |contribution| %>
+ 					<% user = @project.get_user(contribution) %>
+ 							<tr>
+	 							<td><%= count %></td>
+	 							<td><%= image_tag user.avatar.url(:mini) %> <%= user.full_name %></td>	
+								<td>$<%=number_with_delimiter( contribution.amount_in_dollars, :delimiter => ',') %> </td>	
+								<td><%= contribution.created_at.strftime('%b. %e, %Y') %></td>
+
+ 							</tr>
+							
+ 					
+ 				<% end %>	
+			</table>
+
+
+
+
+
 </div>
+	<div class="large-6 medium-6 small-12 columns">
+  <h3>Reviews</h3>
+			<div id="review-list">
+				  <%= render :partial => "reviews" %>
+			</div>
 
-<% if current_user %>
+			<% if current_user %>
 
-<h4>New Review</h4>
+			<h4>New Review</h4>
 
-  <%= form_for ([@project, @review]), :remote => true do |f| %>
+			  <%= form_for ([@project, @review]), :remote => true do |f| %>
 
-    <% if @review.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+			    <% if @review.errors.any? %>
+			      <div id="error_explanation">
+			        <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
 
-        <ul>
-        <% @review.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
+			        <ul>
+			        <% @review.errors.full_messages.each do |msg| %>
+			          <li><%= msg %></li>
+			        <% end %>
+			        </ul>
+			      </div>
+			    <% end %>
 
-    <div class="field">
-      <%= f.label :comment %><br />
-      <%= f.text_area :comment %>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-  <% end %>
+			      <%= f.text_area :comment, class: "review-box" %>
+			      <%= f.submit "Add Review", class: "button small" %>
+			  <% end %>
 
-    <% else %>
-  <p>Please <%= link_to "log in", new_session_path %> to add a review.</p> 
-<% end %>
+			    <% else %>
+			  
+			<% end %>
 
-	</div>
-</div>  <!-- end big row -->
+				</div>
+	</div>  
 <hr>
