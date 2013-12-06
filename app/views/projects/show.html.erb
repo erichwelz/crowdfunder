@@ -86,10 +86,10 @@
 	<div class="large-6 medium-6 small-12 columns">
 		<div class="row">
 		<div class="project-stats panel">
-		 <h6>Goal:</h6> <h2>$<%= @project.goal_in_dollars %></h2>
+		 <h6>Goal:</h6> <h2>$<%= number_with_delimiter( @project.goal_in_dollars, :delimiter => ',') %></h2>
 		</div>
 		<div class="project-stats panel">
-		<h6>To Date:</h6> <h2>$<%= @project.total_contributions_per_project %></h2>
+		<h6>To Date:</h6> <h2>$<%= number_with_delimiter(@project.total_contributions_per_project, :delimiter => ',') %></h2>
 		</div>
 
 		</div>
@@ -104,11 +104,25 @@
 <div class="progress success round">
   <span class="meter" style="width: <%= @project.max_percentage %>%;"></span>
 </div>
-	
+		<hr>
+			<div class="row">
+				<div class="large-12 medium-12 small-12 breakpoints">
+						<h4>Contriubution Breakpoints</h4>
+						<table class="breakpoint-table">
+							<thead><td>Title</td><td>Amount</td> </thead>
+							<% @project.breakpoints.each do |bp| %>
+								<tr>
+									<td><%= bp.breakpoint_name %></td>
+									<td>$<%= 
+								number_with_delimiter( bp.breakpoint_amount, :delimiter => ',') %></td>
+								</tr>  
+						<% end %>
 
-
-		
-		
+					</table>
+					
+				
+				</div> <!-- end large12 -->
+			</div> <!-- end row -->
 		<hr>
 
 		<div class="row owners-info">
@@ -126,6 +140,8 @@
 	</div>
 	<hr>
 	</div> <!-- end big row -->
+
+
 	<div class="row">
 <hr>
 	<div class="large-12 medium-12 small-12">
