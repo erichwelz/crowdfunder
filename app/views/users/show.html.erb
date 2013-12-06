@@ -3,13 +3,17 @@
 	<div class="large-4 medium-4 small-12 columns">
 		<%= image_tag @user.avatar.url(:medium) %>
 	</div> <!-- end column -->
-	<div class="large-8 medium-8 small-12 columns">
+	<div class="large-4 medium-4 small-12 columns">
 	 <h1 id="users-name"><%= @user.full_name %></h1>
 		<p> <%= @user.email %> </p>
 		<p> <%= @user.bio %></p>
-		
-
 	</div> <!-- end column -->
+	<div class="large-4 medium-4 small-12 columns">
+		<h3>Donation Achievements</h3>
+
+
+	</div>
+
 
 	</div> <!-- end row -->
 	
@@ -158,23 +162,22 @@
 	
 
 <%  total_each_project = @user.contributions.sum(:amount_in_dollars, :group => :project_id) %>
-
 <% total_each_project.each do |tep| %>
-<% project = Project.find_by(:id => tep[0]) %>
-<% bp_array = project.breakpoints.map { |x| x.breakpoint_amount } %> 
-<% bp_sorted_array = bp_array.sort.reverse %> 
-<% bp_sorted_array.each do |bp_amount| %>
+		<% project = Project.find_by(:id => tep[0]) %>
+		<% bp_array = project.breakpoints.map { |x| x.breakpoint_amount } %> 
+		<% bp_sorted_array = bp_array.sort.reverse %> 
+		<% bp_sorted_array.each do |bp_amount| %>
 
-<% if (tep[1] >= bp_amount) %>
-<div class="each-check">
-donation of <%= tep[1] %> was more than<%= bp_amount %>
-<% breakpoint = Breakpoint.find_by(:breakpoint_amount => bp_amount) %>
-<%= breakpoint.breakpoint_name %>
-<%= project.title %>
-</div>
-<% break %> 
-<% end %>
-<% end %>
+		<% if (tep[1] >= bp_amount) %>
+		<div class="each-check">
+		donation of <%= tep[1] %> was more than<%= bp_amount %>
+		<% breakpoint = Breakpoint.find_by(:breakpoint_amount => bp_amount) %>
+		<%= breakpoint.breakpoint_name %>
+		<%= project.title %>
+		</div>
+		<% break %> 
+		<% end %>
+		<% end %>
 <% end %>
 
 
