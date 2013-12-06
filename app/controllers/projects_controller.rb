@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
 
   def index
     #@projects = Project.all
-    @projects = Project.order('projects.finish_date ASC').page(params[:page])
+    @projects = Project.current_projects.order('projects.finish_date ASC').page(params[:page])
   end
 
   def show
