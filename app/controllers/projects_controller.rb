@@ -4,6 +4,17 @@ class ProjectsController < ApplicationController
   def index
     #@projects = Project.all
     @projects = Project.current_projects.order('projects.finish_date ASC').page(params[:page])
+
+   if params[:term]
+     @projects = @projects.where('name LIKE ?', "%#{params[:term]}%")
+   end
+
+    respond_to do |format|
+      format.js # allows the controller to respond to Javascript
+      format.html
+      format.json { render json: @projects } # allows the controller to respond to JSON (for the autosuggest)
+    end
+
   end
 
   def show

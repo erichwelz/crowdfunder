@@ -13,7 +13,23 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require jquery.ui.autocomplete
 // require turbolinks
 //= require_tree .
+
+  $('#term').autocomplete({
+    minLength: 2,
+    source: 'projects.json',
+    response: function(event, ui) {
+      for(var i=0; i < ui.content.length; i++) {
+        var item = ui.content[i];
+        item.label = item.value = item.name;
+      }
+    },
+    select: function(event, ui) {
+      event.preventDefault();
+      window.location.href = 'projects/' + ui.item.id;
+    }
+  });
 
 $(function(){ $(document).foundation(); });
