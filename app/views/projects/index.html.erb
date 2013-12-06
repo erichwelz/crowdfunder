@@ -40,7 +40,6 @@
 <div class="row">
 	
 	<% @projects.each do |project| %>
-		<% if project.public_date < Date.today %>
 				<%= link_to "/projects/#{project.id}" do %>
 					<div class="large-2 medium-2 small-5 columns centered space">
 						<h6><%= project.title  %></h6>
@@ -57,7 +56,6 @@
 </div>
 						 <br> 
 					</div>
-				<% end %>
 			<% end %>
 		<% end %>
 
