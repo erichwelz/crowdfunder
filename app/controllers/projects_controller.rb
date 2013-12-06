@@ -2,7 +2,8 @@ class ProjectsController < ApplicationController
   
 
   def index
-    @projects = Project.all
+    #@projects = Project.all
+    @projects = Project.order('projects.finish_date ASC').page(params[:page])
   end
 
   def show
