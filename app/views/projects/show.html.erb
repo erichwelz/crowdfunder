@@ -22,6 +22,8 @@
 						<div class="button small">Edit Project</div>
 						<div class="button small" id="make-breakpoint">Add Breakpoint</div>
 					<% end %>
+				<% else %>
+				<%= link_to "Log in to Add a Review or Contribute", new_session_path, class: "button small" %> 
 				<% end %>
 		</div> <!-- end row -->
 
@@ -138,23 +140,38 @@
 			<% end %>
 		</div>
 	</div>
-	<hr>
+
 	</div> <!-- end big row -->
+			
  				
- 				<% @project.contributions.each do |contribution| %>
-
- 					<% user = @project.get_user(contribution) %>
-
- 							<%= user.full_name %>
-						
-
-
- 				<%= contribution.user_id %> <%= contribution.amount_in_dollars %> <br>
- 				<% end %>	
-
 	<div class="row">
-<hr>
-	<div class="large-12 medium-12 small-12">
+	<hr>
+		<div class="large-6 medium-6 small-12 columns">
+  		<h3>Contributions</h3>
+			
+			<table class="contribution-table">
+				<thead> <td></td><td>Contributor</td> <td>Amount</td> <td>Date</td> </thead>
+					<% count = 1 %>
+				<% @project.contributions.each do |contribution| %>
+ 					<% user = @project.get_user(contribution) %>
+ 							<tr>
+	 							<td><%= count %></td>
+	 							<td><%= image_tag user.avatar.url(:mini) %> <%= user.full_name %></td>	
+								<td>$<%=number_with_delimiter( contribution.amount_in_dollars, :delimiter => ',') %> </td>	
+								<td><%= contribution.created_at.strftime('%b. %e, %Y') %></td>
+
+ 							</tr>
+							
+ 					
+ 				<% end %>	
+			</table>
+
+
+
+
+
+</div>
+	<div class="large-6 medium-6 small-12 columns">
   <h3>Reviews</h3>
 			<div id="review-list">
 				  <%= render :partial => "reviews" %>
@@ -178,13 +195,12 @@
 			      </div>
 			    <% end %>
 
-			      <%= f.label :comment %><br />
-			      <%= f.text_area :comment %>
-			      <%= f.submit %>
+			      <%= f.text_area :comment, class: "review-box" %>
+			      <%= f.submit "Add Review", class: "button small" %>
 			  <% end %>
 
 			    <% else %>
-			  <p>Please <%= link_to "log in", new_session_path %> to add a review.</p> 
+			  
 			<% end %>
 
 				</div>
