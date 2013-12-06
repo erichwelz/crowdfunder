@@ -26,5 +26,10 @@ class Contribution < ActiveRecord::Base
     end
       return funded
     end
+
+
+    def user_each_project_contribution
+      
+    end
 	 
 end	
