@@ -14,8 +14,6 @@ class User < ActiveRecord::Base
 	   	:medium => "300x300>",
 	   	:thumb => "100x100#" }, :default_url => '/images/:attachment/missing_:style.png'
 	   	
-
- 	
 	validates_confirmation_of :password
 	validates_presence_of :password, :on => :create
 	validates_presence_of :email
