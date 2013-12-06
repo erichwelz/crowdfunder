@@ -42,5 +42,13 @@ class Project < ActiveRecord::Base
     Contribution.all.sum(:amount_in_dollars)
   end
 
+  def get_user(contribution)
+    @user = User.find_by(:id => contribution.user_id)    
+  end
+
+  def get_fully_funded_projects
+    
+  end
+
 
 end
