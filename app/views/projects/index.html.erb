@@ -10,7 +10,10 @@
 					</div>
 					<div class="large-3 medium-3 small-6 columns stats-content panel">
 						<span class="achievement-title">Fully Funded Projects:</span>  
-						<h1><%= Contribution.with_completed_goals.count %></h1>
+					
+						<h1><%= Contribution.total_funded %>	
+						</h1>
+					
 					</div>
 					<div class="large-3 medium-3 small-6 columns stats-content panel">
 						<span class="achievement-title">Total Contributions:</span>  
@@ -60,8 +63,5 @@
 		<% end %>
 
 </div> <!-- end row -->
-
-
-
 
 
