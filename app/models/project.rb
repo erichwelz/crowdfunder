@@ -14,9 +14,6 @@ class Project < ActiveRecord::Base
   validates :finish_date, :date => {:after => :start_date, :message => "must be after Start Date"}
   # validates :public_date, :date => {:after_or_equal_to => :start_date, :message => "must be after or equal to Start Date" }
 
-    scope :current_project, -> {self.joins(:project).where("Date.today" >= projects.public_date")}
-
-
   delegate :first_name, :to => :owner, :prefix => true
 
   scope :current_projects, lambda {Project.where("current_date BETWEEN public_date AND finish_date")}
