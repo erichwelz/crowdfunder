@@ -5,22 +5,22 @@
 			<div class="sub-title"><h2>the place to raise money to fulfil your dreams</h2></div>
 				<div class="row">
 					<div class="large-3 medium-3 small-6 columns stats-content panel">
-						<span class="achievement-title">Money Raised:</span> 
+						<span class="achievement-title"><h6>Money Raised:</h6></span> 
 						<h1>$<%= number_with_delimiter( Contribution.all.sum(:amount_in_dollars), :delimiter => ',') %></h1>
 					</div>
 					<div class="large-3 medium-3 small-6 columns stats-content panel">
-						<span class="achievement-title">Fully Funded Projects:</span>  
+						<span class="achievement-title"><h6>Fully Funded Projects:</h6></span>  
 					
 						<h1><%= Contribution.total_funded %>	
 						</h1>
 					
 					</div>
 					<div class="large-3 medium-3 small-6 columns stats-content panel">
-						<span class="achievement-title">Total Contributions:</span>  
+						<span class="achievement-title"><h6>Total Contributions:</h6></span>  
 						<h1><%= Contribution.all.count(:amount_in_dollars) %></h1>
 					</div>
 					<div class="large-3 medium-3 small-6  columns stats-content panel">
-						<span class="achievement-title">Contributors:</span>  
+						<span class="achievement-title"><h6>Contributors:</h6></span>  
 						<h1><%= Contribution.all.distinct.count(:user_id) %></h1>
 					</div>
 				</div> <!-- end row under main -->
@@ -28,18 +28,15 @@
 		</div>
 	</div>
 
-	</div>
+	<div class = "row" >
 
-<div class = "row" >
-
-<hr />
-
+<br>
 <%= label_tag :term, "Search Projects:" %>
 <%= text_field_tag :term %>
 
-<hr />
+	</div>
 
-</div>	
+
 
 
 
