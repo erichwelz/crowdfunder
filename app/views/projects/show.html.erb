@@ -140,7 +140,17 @@
 	</div>
 	<hr>
 	</div> <!-- end big row -->
+ 				
+ 				<% @project.contributions.each do |contribution| %>
 
+ 					<% user = @project.get_user(contribution) %>
+
+ 							<%= user.full_name %>
+						
+
+
+ 				<%= contribution.user_id %> <%= contribution.amount_in_dollars %> <br>
+ 				<% end %>	
 
 	<div class="row">
 <hr>
