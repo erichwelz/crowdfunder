@@ -7,11 +7,16 @@
 
 		<div class="dates">
 			<h6>Start:</h6> <h4><%= @project.start_date.strftime('%b. %e, %Y') %></h4>
+		<h4>Days Left: <%= @project.days_until_close %><h4>
+
 		</div>
+	
 			<div class="dates">
 			<h6>End:</h6> <h4><%= @project.finish_date.strftime('%b. %e, %Y') %></h4>
+			
+	
+	
 
-		<%= @project.days_until_close %>
 		</div>
 		<hr>
 
