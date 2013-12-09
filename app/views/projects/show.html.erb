@@ -21,14 +21,20 @@
 		<hr>
 
 		<div class="row">
+
+
 			<% if current_user %>
 				<div class="button small" id="make-contribution">Make a Contribution</div> 
 					<% if current_user.id == @project.owner_id %>
 						<div class="button small">Edit Project</div>
 						<div class="button small" id="make-breakpoint">Add Breakpoint</div>
 					<% end %>
+			
 				<% else %>
+			
 				<%= link_to "Log in to Add a Review or Contribute", new_session_path, class: "button small" %> 
+			
+
 				<% end %>
 		</div> <!-- end row -->
 
@@ -154,26 +160,7 @@
 		<div class="large-6 medium-6 small-12 columns">
   		<h3>Contributions</h3>
 			
-			<table class="contribution-table">
-				<thead> <td></td><td>Contributor</td> <td>Amount</td> <td>Date</td> </thead>
-					<% count = 1 %>
-				<% @project.contributions.each do |contribution| %>
- 					<% user = @project.get_user(contribution) %>
- 							<tr>
-	 							<td><%= count %></td>
-	 							<td><%= image_tag user.avatar.url(:mini) %> <%= user.full_name %></td>	
-								<td>$<%=number_with_delimiter( contribution.amount_in_dollars, :delimiter => ',') %> </td>	
-								<td><%= contribution.created_at.strftime('%b. %e, %Y') %></td>
-
- 							</tr>
-							
- 					
- 				<% end %>	
-			</table>
-
-
-
-
+			<%= render :partial => "contributions"%>
 
 </div>
 	<div class="large-6 medium-6 small-12 columns">
