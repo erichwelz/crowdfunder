@@ -1,7 +1,7 @@
 <div class="row">
 	<h1>Edit Crowdfunder User Profile</h1>
 
-	<div class="large-6 medium-6 small-12 columns">
+	<div class="large-6 medium-6 small-9 columns">
 		
 
 		<%= form_for @user,  html: { multipart: true } do |f| %>
@@ -15,9 +15,6 @@
 			<%= f.label :email %>
 			<%= f.text_field :email %>
 
-			<%= f.label :bio %>
-			<%= f.text_area :bio %>
-		
 			<%= f.label :avatar %>
 			<%= f.file_field :avatar%>
 
