@@ -1,4 +1,3 @@
-
 $(document).ready( function(){
 
 	$('#make-contribution').on('click', function(){

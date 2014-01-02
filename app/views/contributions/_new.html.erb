@@ -1,31 +1,27 @@
-askdhjf
 <%= form_for (@contribution = Contribution.new) do |f| %>
-<% if @contribution.errors.any? %>
-<div id="error_explanation">
-<h2><%= pluralize(@contribution.errors.count, "error") %> prohibited this contribution from being saved:</h2>
-
-<ul>
-<% @contribution.errors.full_messages.each do |msg| %>
-<li><%= msg %></li>
-<% end %>
-</ul>
-</div>
-<% end %>
-
-
-<div class="row">
-	<div class="large-5 columns">
-		<div class="field">
-			<%= f.label :amount_in_dollars %><br />
-			<%= f.text_field :amount_in_dollars %>
+	<% if @contribution.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@contribution.errors.count, "error") %> prohibited this contribution from being saved:</h2>
+			<ul>
+			<% @contribution.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+			</ul>
 		</div>
-	<br>
-		<%= current_user.id %>
-<br>
-		<div class="actions">
-			<%= f.submit, class: 'button'%>
-		</div>
+	<% end %>
 
-	</div> <!-- end large-5 -->
-</div> <!-- end row -->
+	<div class="row">
+		<div class="large-5 columns">
+			<div class="field">
+				<%= f.label :amount_in_dollars %><br />
+				<%= f.text_field :amount_in_dollars %>
+			</div>
+			<br>
+			<%= current_user.id %>
+			<br>
+			<div class="actions">
+				<%= f.submit, class: 'button'%>
+			</div>
+		</div> <!-- end large-5 -->
+	</div> <!-- end row -->
 <% end %>

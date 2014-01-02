@@ -67,19 +67,14 @@
 		<div class="large-5 medium-5 small-6 columns">&nbsp</div>
 	<% end %>
 </div> <!-- end row -->
-
-
-
 <hr>
 <div class="row">
-
 	<div class="large-6 medium-6 small-12 columns">
 		<h2>My Contributions</h2>
 		<% x = 1 %>
 
 		<table class="my-contributions">	
-		<thead> <td></td> <td>Project</td> <td>contribution</td> </thead>
-		
+			<thead> <td></td> <td>Project</td> <td>contribution</td> </thead>
 			<% @user.contributions.each do |contribution| %>
 				<% project = Project.where(:id => contribution.project_id) %>
 				<% project.each do |proj| %>
@@ -87,17 +82,16 @@
 						<td><%= x %></td>
 						<td><%= proj.title %></td>
 				<% end %>
-						<td> $<%= number_with_delimiter(contribution.amount_in_dollars, :delimiter => ',') %> </td> 
-					</tr>
+					<td> $<%= number_with_delimiter(contribution.amount_in_dollars, :delimiter => ',') %> </td> 
+				</tr>
 				<% x+=1 %>
-			<% end %>
+				<% end %>
 		</table>
 	</div>
 	
 	<div class="large-6 medium-6 small-12 columns">
   
-		
-  	<h2>My Projects</h2>
+   	<h2>My Projects</h2>
     <h4>Active Projects</h4>
 
     <table class="active-projects">
@@ -145,37 +139,12 @@
 	<div class="row">
 		<div class="large-6 medium-6 small-12 columns">
 			
-
-		
 		</div>
 
-
-	My projects: <% @user.projects.each do |proj| %>
-		<%= proj.title %>
+		My projects: <% @user.projects.each do |proj| %>
+			<%= proj.title %>
 	<% end %>
 
-
-
-
-
-
-<!-- def self.total_funded
-      funded = 0
-        grouped_by =  Contribution.sum(:amount_in_dollars, :group => :project_id)
-    grouped_by.each do |gp|
-      Project.all.each do |proj|
-          if proj.id == gp[0]
-            if proj.goal_in_dollars <= gp[1]
-              funded +=1
-            end
-          end
-      end 
-    end
-      return funded
-    end
- -->
 	</div>
 </div> <!-- end row -->
 <hr>
-
-c

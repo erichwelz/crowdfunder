@@ -1,12 +1,10 @@
-   <% @project.reviews.each do |review| %>
-    <p>
-      
-      <br>
-      <% if review.user != nil %>
-        <%= image_tag review.user.avatar.url(:mini) %> <%= review.user.full_name %>
-         - <%= review.created_at.strftime('%b. %e, %Y') %> <br>
-         <%= review.comment %>
-         <hr>
-      <% end %>
-    </p>
-  <% end %>
+<% @project.reviews.each do |review| %>
+  <p><br>
+    <% if review.user != nil %>
+      <%= image_tag review.user.avatar.url(:mini) %> <%= review.user.full_name %>
+       - <%= review.created_at.strftime('%b. %e, %Y') %> <br>
+       <%= review.comment %>
+       <hr>
+    <% end %>
+  </p>
+<% end %>

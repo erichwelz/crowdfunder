@@ -1,16 +1,13 @@
 <table class="contribution-table">
-				<thead> <td></td><td>Contributor</td> <td>Amount</td> <td>Date</td> </thead>
-					<% count = 1 %>
-				<% @project.contributions.each do |contribution| %>
- 					<% user = @project.get_user(contribution) %>
- 							<tr>
-	 							<td><%= count %></td>
-	 							<td><%= image_tag user.avatar.url(:mini) %> <%= user.full_name %></td>	
-								<td>$<%=number_with_delimiter( contribution.amount_in_dollars, :delimiter => ',') %> </td>	
-								<td><%= contribution.created_at.strftime('%b. %e, %Y') %></td>
-
- 							</tr>
-							
- 					
- 				<% end %>	
-			</table>
+	<thead> <td></td><td>Contributor</td> <td>Amount</td> <td>Date</td> </thead>
+	<% count = 1 %>
+	<% @project.contributions.each do |contribution| %>
+		<% user = @project.get_user(contribution) %>
+			<tr>
+				<td><%= count %></td>
+				<td><%= image_tag user.avatar.url(:mini) %> <%= user.full_name %></td>	
+			<td>$<%=number_with_delimiter( contribution.amount_in_dollars, :delimiter => ',') %> </td>	
+			<td><%= contribution.created_at.strftime('%b. %e, %Y') %></td>
+		</tr>
+	<% end %>	
+</table>

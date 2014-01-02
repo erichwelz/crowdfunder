@@ -10,9 +10,7 @@ class Project < ActiveRecord::Base
 
 	validates	:title, :description, :goal_in_dollars, :start_date, :finish_date, :owner_id, :presence => true
   validates :goal_in_dollars, :numericality => {:only_integer => true}
-
   validates :finish_date, :date => {:after => :start_date, :message => "must be after Start Date"}
-  # validates :public_date, :date => {:after_or_equal_to => :start_date, :message => "must be after or equal to Start Date" }
 
   delegate :first_name, :to => :owner, :prefix => true
 
@@ -46,10 +44,5 @@ class Project < ActiveRecord::Base
   def get_user(contribution)
     @user = User.find_by(:id => contribution.user_id)    
   end
-
-  def get_fully_funded_projects
-    
-  end
-
 
 end

@@ -1,35 +1,32 @@
 <% @project = Project.find(params[:project_id]) %>
 
 <%= form_for @contribution do |f| %>
-<% if @contribution.errors.any? %>
-<div id="error_explanation">
-<h2><%= pluralize(@contribution.errors.count, "error") %> prohibited this contribution from being saved:</h2>
+	<% if @contribution.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@contribution.errors.count, "error") %> prohibited this contribution from being saved:</h2>
 
-<ul>
-<% @contribution.errors.full_messages.each do |msg| %>
-<li><%= msg %></li>
-<% end %>
-</ul>
-</div>
-<% end %>
+			<ul>
+				<% @contribution.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
 
-
-<div class="row">
-	<div class="large-6 columns">
+	<div class="row">
+		<div class="large-6 columns">
 			<%= f.label :amount_in_dollars %><br />
 			<%= f.text_field :amount_in_dollars %>
 
-		
-		<%= f.hidden_field :project_id, :value => @project.id %>
-		<%= f.hidden_field :user_id, :value => current_user.id %>
-		
-		<%= @project.id %>
-		<%= current_user.id %>
+			<%= f.hidden_field :project_id, :value => @project.id %>
+			<%= f.hidden_field :user_id, :value => current_user.id %>
+			
+			<%= @project.id %>
+			<%= current_user.id %>
 
-		<div class="actions">
-			<%= f.submit %>
-		</div>
-
-	</div> <!-- end large-5 -->
-</div> <!-- end row -->
+			<div class="actions">
+				<%= f.submit %>
+			</div>
+		</div> <!-- end large-5 -->
+	</div> <!-- end row -->
 <% end %>

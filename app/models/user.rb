@@ -6,9 +6,6 @@ class User < ActiveRecord::Base
 	has_many :contributions
 	has_many :reviews
 	
-
-
-
 	has_attached_file :avatar, :styles => { 
 		  :mini => "30x30>",
 	   	:medium => "300x300>",

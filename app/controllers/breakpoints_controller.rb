@@ -17,10 +17,10 @@ class BreakpointsController < ApplicationController
   	@breakpoint = Breakpoint.find(params[:id])
   end
 
-  
-
   private
+
   def breakpoint_params
   	params.require(:breakpoint).permit(:project_id, :breakpoint_amount, :breakpoint_name)
   end
+
 end

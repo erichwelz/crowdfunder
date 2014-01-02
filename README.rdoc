@@ -1,28 +1,23 @@
-== README
+== CROWDFUNDER README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application was create as an assignment for Bitmaker Labs.
 
-Things you may want to cover:
+It took 4 class days to complete.
 
-* Ruby version
+There were two contributors to the project.
+- Pat Hann - pathann@gmail.com
+- Erich Welz - erich@welz.ca
 
-* System dependencies
+== FUNCTIONALITY
 
-* Configuration
+This project was meant to be a clone of kickstarter.
 
-* Database creation
+Users can log in and create projects that can be donated to by other users.
 
-* Database initialization
+Users can log on and donate contributions to other projects.
 
-* How to run the test suite
+Visitors can see the list of projects, total contributions, comments about projects and the whole site.
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Each project has several breakpoints that allow contributors to have a certain status based on how much they contribute.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.

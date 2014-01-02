@@ -2,7 +2,6 @@ class ProjectsController < ApplicationController
   
 
   def index
-    #@projects = Project.all
     @projects = Project.current_projects.order('projects.finish_date ASC').page(params[:page])
 
    if params[:term]
@@ -61,10 +60,9 @@ class ProjectsController < ApplicationController
   helper :all
 
   private
+ 
   def project_params
     params.require(:project).permit(:title, :description, :goal_in_dollars, :start_date, :finish_date, :owner_id, :public_date, :category_id)
   end
-
-
 
 end

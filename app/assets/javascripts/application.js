@@ -18,7 +18,7 @@
 //=require jquery.ui.autocomplete
 //= require_tree .
 
-  $('#term').autocomplete({
+ $('#term').autocomplete({
     minLength: 2,
     source: 'projects.json',
     response: function(event, ui) {

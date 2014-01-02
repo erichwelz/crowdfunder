@@ -9,71 +9,53 @@
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
-   
   </head>
+  <body>
+  <div class="contain-to-grid">
+    <nav class="top-bar" data-topbar data-mobile-show-parent-link="false">
+      <ul class="title-area">
+        <li class="name">
+          <h1> <%= link_to "Crowdfunder", root_path %> </h1>
+        </li>
+      </ul>
 
-
-
-
-
-
-<body>
-<div class="contain-to-grid">
-  <nav class="top-bar" data-topbar data-mobile-show-parent-link="false">
-  
-    <ul class="title-area">
-      <li class="name">
-        <h1> <%= link_to "Crowdfunder", root_path %> </h1>
-      </li>
-    </ul>
-
-    <section class="top-bar-section">
-     
-
-
-      <% if current_user %>
-     
-
-      <ul class="right">
-        <% if current_user.avatar !=  %>
-        <li class="mini-photo"> <%= image_tag current_user.avatar.url(:mini) %> </li>
-        <% end %>
-        <li class="has-dropdown">
-          <%= link_to current_user.full_name, user_path(current_user) %>
-          <ul class="dropdown">
-            <li> <%= link_to "Logout", logout_path %> </li>
+      <section class="top-bar-section">
+        <% if current_user %>
+          <ul class="right">
+            <% if current_user.avatar !=  %>
+              <li class="mini-photo"> <%= image_tag current_user.avatar.url(:mini) %> </li>
+              <% end %>
+              <li class="has-dropdown">
+                <%= link_to current_user.full_name, user_path(current_user) %>
+                <ul class="dropdown">
+                  <li> <%= link_to "Logout", logout_path %> </li>
+                </ul>
+              </li>
           </ul>
-        </li>
-      </ul>
+            <% else %>
+          <ul class="right">
+            <li class="active">
+              <%= link_to "Sign Up", new_user_path %>
+            </li>
+            <li>
+              <%= link_to "Login", :login %>
+            </li>
+          </ul>
+        <% end %>
+      </section>
+    </nav>
+  </div> <!-- end contain to grid -->
 
-
-      <% else %>
-      <ul class="right">
-        <li class="active">
-          <%= link_to "Sign Up", new_user_path %>
-        </li>
-        <li>
-          <%= link_to "Login", :login %>
-        </li>
-      </ul>
-      <% end %>
-    </section>
-  </nav>
-</div> <!-- end contain to grid -->
-
-<% unless current_page?('/') || current_page?('/projects') %>
-<div class="row">
-  <div class="large-12 medium-12 small-12">   
-<% end %>
+  <% unless current_page?('/') || current_page?('/projects') %>
+    <div class="row">
+      <div class="large-12 medium-12 small-12">   
+  <% end %>
 
     <%= yield %>
-     <%= javascript_include_tag "application" %>
+      <%= javascript_include_tag "application" %>
+    </div>
   </div>
-</div>
 
-<div class="row">
- 
-</div>
-
+  <div class="row">&nbsp</div>
 </body>
 </html>

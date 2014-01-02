@@ -1,19 +1,18 @@
 class ReviewsController < ApplicationController
   before_filter :load_project
+  
   def show
     @review = Review.find(params[:id])
   end
 
   def create
-      @review = Review.new( 
-      :comment => params[:review][:comment],
-      :project_id => @project.id,
-      :user_id => current_user.id
-      ) 
+    @review = Review.new( 
+    :comment => params[:review][:comment],
+    :project_id => @project.id,
+    :user_id => current_user.id
+    ) 
 
     respond_to do |format|
-
-
       if @review.save
         format.html { redirect_to project_path(@project), notice: 'Review created successfully' }
         format.js {}
@@ -22,7 +21,6 @@ class ReviewsController < ApplicationController
         format.js {}
       end
     end
-
   end
 
   def destroy
@@ -42,4 +40,5 @@ class ReviewsController < ApplicationController
   def load_project
     @project = Project.find(params[:project_id])
   end
+
 end

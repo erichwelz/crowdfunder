@@ -4,38 +4,25 @@
 	<div class="large-6  left medium-6 small-12 columns"> 
     <h5><%= @project.category.category_name %></h5>
 		<p><%= @project.description %> </p> 
-
 		<div class="dates">
 			<h6>Start:</h6> <h4><%= @project.start_date.strftime('%b. %e, %Y') %></h4>
-		<h4>Days Left: <%= @project.days_until_close %><h4>
-
+			<h4>Days Left: <%= @project.days_until_close %><h4>
 		</div>
 	
-			<div class="dates">
+		<div class="dates">
 			<h6>End:</h6> <h4><%= @project.finish_date.strftime('%b. %e, %Y') %></h4>
-			
-	
-	
-
 		</div>
 		<hr>
-
 		<div class="row">
-
-
 			<% if current_user %>
 				<div class="button small" id="make-contribution">Make a Contribution</div> 
 					<% if current_user.id == @project.owner_id %>
 						<div class="button small">Edit Project</div>
 						<div class="button small" id="make-breakpoint">Add Breakpoint</div>
 					<% end %>
-			
-				<% else %>
-			
+			<% else %>
 				<%= link_to "Log in to Add a Review or Contribute", new_session_path, class: "button small" %> 
-			
-
-				<% end %>
+			<% end %>
 		</div> <!-- end row -->
 
 		<div class="row" id="contribution-form">
@@ -90,91 +77,73 @@
 				<%= f.submit "submit", class: "button small" %>
 			</div> <!-- end large-8 -->
 		<% end %><!--  end form breakpoint -->
-
-	</div> <!-- end breakbpoint div -->
-
-
+		</div> <!-- end breakbpoint div -->
 	</div> <!-- end 6 -->
 	
 	<div class="large-6 medium-6 small-12 columns">
 		<div class="row">
 		<div class="project-stats panel">
-		 <h6>Goal:</h6> <h2>$<%= number_with_delimiter( @project.goal_in_dollars, :delimiter => ',') %></h2>
+			<h6>Goal:</h6> <h2>$<%= number_with_delimiter( @project.goal_in_dollars, :delimiter => ',') %></h2>
 		</div>
 		<div class="project-stats panel">
-		<h6>To Date:</h6> <h2>$<%= number_with_delimiter(@project.total_contributions_per_project, :delimiter => ',') %></h2>
+			<h6>To Date:</h6> <h2>$<%= number_with_delimiter(@project.total_contributions_per_project, :delimiter => ',') %></h2>
 		</div>
-
-		</div>
-
-		<div class="row">
+	</div>
+	<div class="row">
 		<div class="percentage panel">
 		<%= @project.percentage_of_goal %>%
-
 		</div>
-		</div>
+	</div>
 
 <div class="progress success round">
   <span class="meter" style="width: <%= @project.max_percentage %>%;"></span>
 </div>
-		<hr>
-			<div class="row">
-				<div class="large-12 medium-12 small-12 breakpoints">
-						<h4>Contriubution Breakpoints</h4>
-						<table class="breakpoint-table">
-							<thead><td>Title</td><td>Amount</td> </thead>
-							<% @project.breakpoints.each do |bp| %>
-								<tr>
-									<td><%= bp.breakpoint_name %></td>
-									<td>$<%= 
-								number_with_delimiter( bp.breakpoint_amount, :delimiter => ',') %></td>
-								</tr>  
-						<% end %>
-
-					</table>
-					
-				
-				</div> <!-- end large12 -->
-			</div> <!-- end row -->
-		<hr>
-
-		<div class="row owners-info">
-			<h5>Project Owner</h5>
- 			<%= link_to "/users/#{@project.owner_id}" do %>
-				<div class="large-3 columns">
-					<%= image_tag @project.owner.avatar.url(:thumb) %>
-				</div>
-				<div class="large-9 columns">
-					<h6><%= @project.owner.full_name %></h6>
-					<p> <%= truncate(@project.owner.bio, length: 70) %>
-				</div> 
+<hr>
+<div class="row">
+	<div class="large-12 medium-12 small-12 breakpoints">
+		<h4>Contriubution Breakpoints</h4>
+		<table class="breakpoint-table">
+			<thead><td>Title</td><td>Amount</td> </thead>
+			<% @project.breakpoints.each do |bp| %>
+				<tr>
+					<td><%= bp.breakpoint_name %></td>
+					<td>$<%= 
+				number_with_delimiter( bp.breakpoint_amount, :delimiter => ',') %></td>
+				</tr>  
 			<% end %>
+		</table>
+	</div> <!-- end large12 -->
+</div> <!-- end row -->
+<hr>
+<div class="row owners-info">
+	<h5>Project Owner</h5>
+	<%= link_to "/users/#{@project.owner_id}" do %>
+		<div class="large-3 columns">
+			<%= image_tag @project.owner.avatar.url(:thumb) %>
 		</div>
-	</div>
-
-	</div> <!-- end big row -->
-			
- 				
-	<div class="row">
-	<hr>
-		<div class="large-6 medium-6 small-12 columns">
-  		<h3>Contributions</h3>
-			
-			<%= render :partial => "contributions"%>
-
+		<div class="large-9 columns">
+			<h6><%= @project.owner.full_name %></h6>
+			<p> <%= truncate(@project.owner.bio, length: 70) %>
+		</div> 
+	<% end %>
 </div>
+</div>
+</div> <!-- end big row -->
+
+<div class="row">
+<hr>
 	<div class="large-6 medium-6 small-12 columns">
-  <h3>Reviews</h3>
-			<div id="review-list">
-				  <%= render :partial => "reviews" %>
-			</div>
-
-			<% if current_user %>
-
+		<h3>Contributions</h3>
+			<%= render :partial => "contributions"%>
+	</div>
+	<div class="large-6 medium-6 small-12 columns">
+  	<h3>Reviews</h3>
+		<div id="review-list">
+			<%= render :partial => "reviews" %>
+		</div>
+		<% if current_user %>
 			<h4>New Review</h4>
-
 			  <%= form_for ([@project, @review]), :remote => true do |f| %>
-
 			    <% if @review.errors.any? %>
 			      <div id="error_explanation">
 			        <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
@@ -186,16 +155,14 @@
 			        </ul>
 			      </div>
 			    <% end %>
-
-			      <%= f.text_area :comment, class: "review-box" %>
-			      <%= f.submit "Add Review", class: "button small" %>
+		      <%= f.text_area :comment, class: "review-box" %>
+		      <%= f.submit "Add Review", class: "button small" %>
 			  <% end %>
 
-			    <% else %>
+			<% else %>
 			  
 			<% end %>
-
-				</div>
+		</div>
 	</div>  
 <hr>
 

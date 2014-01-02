@@ -29,52 +29,40 @@
 	</div>
 
 	<div class = "row" >
-
-<br>
-<%= label_tag :term, "Search Projects:" %>
-<%= text_field_tag :term %>
-
+		<br>
+		<%= label_tag :term, "Search Projects:" %>
+		<%= text_field_tag :term %>
 	</div>
 
-
-
-
-
-<div class="row">
-	<div class="large-12 columns centered">
+	<div class="row">
+		<div class="large-12 columns centered">
+		</div>
 	</div>
-</div>
 		
-
-
-
-<div class="row">
-	
-	<% @projects.each do |project| %>
-				<%= link_to "/projects/#{project.id}" do %>
-					<div class="large-2 medium-2 small-5 columns centered space">
-						<h6><%= project.title  %></h6>
-						<div class="owner-name"> <h6>by <%= project.owner.full_name %></h6></div>
-						<p class="front-description">
-
-							<%= truncate(project.description, length: 100) %> </p>
-						<p class="front-description">
-							Date: <%= project.finish_date.strftime('%b. %e') %> </p>		
-						<h6>Contributions:</h6>
-						<h6>$<%= number_with_delimiter( project.total_contributions_per_project, :delimiter => ',') %></h6>
-<div class="progress success round">
-  <span class="meter" style="width: <%= project.max_percentage %>%;"></span>
-</div>
-						 <br> 
-					</div>
-			<% end %>
-		<% end %>
-
+	<div class="row">
+		<% @projects.each do |project| %>
+			<%= link_to "/projects/#{project.id}" do %>
+			<div class="large-2 medium-2 small-5 columns centered space">
+				<h6><%= project.title  %></h6>
+				<div class="owner-name"> <h6>by <%= project.owner.full_name %></h6></div>
+					<p class="front-description">
+					
+					<%= truncate(project.description, length: 100) %> </p>
+					<p class="front-description">
+						Date: <%= project.finish_date.strftime('%b. %e') %> </p>		
+					<h6>Contributions:</h6>
+					<h6>$<%= number_with_delimiter( project.total_contributions_per_project, :delimiter => ',') %></h6>
+				<div class="progress success round">
+			  <span class="meter" style="width: <%= project.max_percentage %>%;"></span>
+				</div>
+			 <br> 
+		</div>
+	<% end %>
+	<% end %>
 </div> <!-- end row -->
-<div class="row bigspace">
-	
-<%= paginate @projects %>
 
+<div class="row bigspace">
+	<%= paginate @projects %>
 </div>
 
 
